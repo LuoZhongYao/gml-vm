@@ -1,0 +1,120 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+$new_env	x86/setup.S	/^$new_env:$/;"	l
+AS	makefile	/^AS = as$/;"	m
+AS	vm/makefile	/^AS = as$/;"	m
+AS	x86/makefile	/^AS = as$/;"	m
+ASM	vm/multiboot.S	/^#define ASM 1$/;"	d
+ASM	x86/setup.S	/^#define ASM$/;"	d
+AS_OPT	makefile	/^AS_OPT = --32$/;"	m
+AS_OPT	vm/makefile	/^AS_OPT = --32$/;"	m
+AS_OPT	x86/makefile	/^AS_OPT = --32$/;"	m
+BSS_END_ADDR	vm/multiboot.S	/^#define     BSS_END_ADDR   =   _end-0x100000$/;"	d
+CC	makefile	/^CC = cc$/;"	m
+CC	vm/makefile	/^CC = cc$/;"	m
+CC	x86/makefile	/^CC = cc$/;"	m
+CC_OPT	makefile	/^CC_OPT = -m32 -c -std=gnu99 -fno-stack-protector -I ..\/include -Wall$/;"	m
+CC_OPT	vm/makefile	/^CC_OPT = -m32 -c -std=gnu99 -fno-stack-protector -I ..\/include -Wall$/;"	m
+CC_OPT	x86/makefile	/^CC_OPT = -m32 -c -std=gnu99 -fno-stack-protector -I ..\/include -Wall$/;"	m
+CODE_C	include/x86/section.h	25;"	d
+CODE_D	include/x86/section.h	27;"	d
+CODE_G	include/x86/section.h	26;"	d
+CODE_READ	include/x86/section.h	24;"	d
+CreateSection	include/x86/section.h	17;"	d
+DATA_B	include/x86/section.h	32;"	d
+DATA_E	include/x86/section.h	30;"	d
+DATA_END_ADDR	vm/multiboot.S	/^#define     DATA_END_ADDR   =   _edata-0x100000$/;"	d
+DATA_G	include/x86/section.h	31;"	d
+DATA_WRITE	include/x86/section.h	29;"	d
+EXT_C	include/multiboot.h	41;"	d
+EXT_C	include/multiboot.h	43;"	d
+GDT_LEN	x86/setup.S	/^GDT_LEN = gdt_end-gdt_start$/;"	d
+HEAD	vm/makefile	/^HEAD= $/;"	m
+HEAD	x86/makefile	/^HEAD= $/;"	m
+LD	makefile	/^LD = ld$/;"	m
+LD	vm/makefile	/^LD = ld$/;"	m
+LD	x86/makefile	/^LD = ld$/;"	m
+LD_OPT	makefile	/^LD_OPT = -m elf_i386 -Ttext 0x300000$/;"	m
+LD_OPT	vm/makefile	/^LD_OPT = --oformat binary -m elf_i386 $/;"	m
+LD_OPT	x86/makefile	/^LD_OPT = --oformat binary -m elf_i386 $/;"	m
+MULTIBOOT_BOOTLOADER_MAGIC	include/multiboot.h	34;"	d
+MULTIBOOT_HEADER_ADDR	vm/multiboot.S	/^#define     MULTIBOOT_HEADER_ADDR = multiboot_header - 0x100000$/;"	d
+MULTIBOOT_HEADER_FLAGS	include/multiboot.h	28;"	d
+MULTIBOOT_HEADER_FLAGS	include/multiboot.h	30;"	d
+MULTIBOOT_HEADER_MAGIC	include/multiboot.h	21;"	d
+MULTIBOOT_HEADER_MMAP	include/multiboot.h	24;"	d
+OBJ	makefile	/^OBJ = x86\/setup.o$/;"	m
+R0	include/x86/section.h	37;"	d
+R1	include/x86/section.h	38;"	d
+R2	include/x86/section.h	39;"	d
+R3	include/x86/section.h	40;"	d
+SECTION_H	include/x86/section.h	7;"	d
+STACK_SIZE	include/multiboot.h	37;"	d
+TSS	include/x86/section.h	35;"	d
+TSS_G	include/x86/section.h	34;"	d
+VMDev	makefile	/^VMDev = a.img$/;"	m
+VMgmL	makefile	/^VMgmL = vmgmL$/;"	m
+_start	vm/multiboot.S	/^_start:$/;"	l
+_start	x86/setup.S	/^_start:$/;"	l
+addr	include/multiboot.h	/^  unsigned long addr;$/;"	m	struct:aout_symbol_table
+addr	include/multiboot.h	/^  unsigned long addr;$/;"	m	struct:elf_section_header_table
+aout_sym	include/multiboot.h	/^    aout_symbol_table_t aout_sym;$/;"	m	union:multiboot_info::__anon1
+aout_symbol_table	include/multiboot.h	/^typedef struct aout_symbol_table$/;"	s
+aout_symbol_table_t	include/multiboot.h	/^} aout_symbol_table_t;$/;"	t	typeref:struct:aout_symbol_table
+base_addr_high	include/multiboot.h	/^  unsigned long base_addr_high;$/;"	m	struct:memory_map
+base_addr_low	include/multiboot.h	/^  unsigned long base_addr_low;$/;"	m	struct:memory_map
+boot_device	include/multiboot.h	/^  unsigned long boot_device;$/;"	m	struct:multiboot_info
+bss_end_addr	include/multiboot.h	/^  unsigned long bss_end_addr;$/;"	m	struct:multiboot_header
+checksum	include/multiboot.h	/^  unsigned long checksum;$/;"	m	struct:multiboot_header
+cmdline	include/multiboot.h	/^  unsigned long cmdline;$/;"	m	struct:multiboot_info
+elf_sec	include/multiboot.h	/^    elf_section_header_table_t elf_sec;$/;"	m	union:multiboot_info::__anon1
+elf_section_header_table	include/multiboot.h	/^typedef struct elf_section_header_table$/;"	s
+elf_section_header_table_t	include/multiboot.h	/^} elf_section_header_table_t;$/;"	t	typeref:struct:elf_section_header_table
+entry_addr	include/multiboot.h	/^  unsigned long entry_addr;$/;"	m	struct:multiboot_header
+flags	include/multiboot.h	/^  unsigned long flags;$/;"	m	struct:multiboot_header
+flags	include/multiboot.h	/^  unsigned long flags;$/;"	m	struct:multiboot_info
+gdt	x86/setup.S	/^gdt:$/;"	l
+gdt_end	x86/setup.S	/^gdt_end:$/;"	l
+gdt_start	x86/setup.S	/^gdt_start:$/;"	l
+header_addr	include/multiboot.h	/^  unsigned long header_addr;$/;"	m	struct:multiboot_header
+idt	x86/setup.S	/^idt:$/;"	l
+length_high	include/multiboot.h	/^  unsigned long length_high;$/;"	m	struct:memory_map
+length_low	include/multiboot.h	/^  unsigned long length_low;$/;"	m	struct:memory_map
+load_addr	include/multiboot.h	/^  unsigned long load_addr;$/;"	m	struct:multiboot_header
+load_end_addr	include/multiboot.h	/^  unsigned long load_end_addr;$/;"	m	struct:multiboot_header
+magic	include/multiboot.h	/^  unsigned long magic;$/;"	m	struct:multiboot_header
+mem_lower	include/multiboot.h	/^  unsigned long mem_lower;$/;"	m	struct:multiboot_info
+mem_upper	include/multiboot.h	/^  unsigned long mem_upper;$/;"	m	struct:multiboot_info
+memory_map	include/multiboot.h	/^typedef struct memory_map$/;"	s
+memory_map_t	include/multiboot.h	/^} memory_map_t;$/;"	t	typeref:struct:memory_map
+mmap_addr	include/multiboot.h	/^  unsigned long mmap_addr;$/;"	m	struct:multiboot_info
+mmap_length	include/multiboot.h	/^  unsigned long mmap_length;$/;"	m	struct:multiboot_info
+mod_end	include/multiboot.h	/^  unsigned long mod_end;$/;"	m	struct:module
+mod_start	include/multiboot.h	/^  unsigned long mod_start;$/;"	m	struct:module
+mods_addr	include/multiboot.h	/^  unsigned long mods_addr;$/;"	m	struct:multiboot_info
+mods_count	include/multiboot.h	/^  unsigned long mods_count;$/;"	m	struct:multiboot_info
+module	include/multiboot.h	/^typedef struct module$/;"	s
+module_t	include/multiboot.h	/^} module_t;$/;"	t	typeref:struct:module
+multiboot_entry	vm/multiboot.S	/^multiboot_entry:$/;"	l
+multiboot_header	include/multiboot.h	/^typedef struct multiboot_header$/;"	s
+multiboot_header	vm/multiboot.S	/^multiboot_header:$/;"	l
+multiboot_header	x86/setup.S	/^multiboot_header:$/;"	l
+multiboot_header_t	include/multiboot.h	/^} multiboot_header_t;$/;"	t	typeref:struct:multiboot_header
+multiboot_info	include/multiboot.h	/^typedef struct multiboot_info$/;"	s
+multiboot_info_t	include/multiboot.h	/^} multiboot_info_t;$/;"	t	typeref:struct:multiboot_info
+num	include/multiboot.h	/^  unsigned long num;$/;"	m	struct:elf_section_header_table
+reserved	include/multiboot.h	/^  unsigned long reserved;$/;"	m	struct:aout_symbol_table
+reserved	include/multiboot.h	/^  unsigned long reserved;$/;"	m	struct:module
+shndx	include/multiboot.h	/^  unsigned long shndx;$/;"	m	struct:elf_section_header_table
+size	include/multiboot.h	/^  unsigned long size;$/;"	m	struct:elf_section_header_table
+size	include/multiboot.h	/^  unsigned long size;$/;"	m	struct:memory_map
+start	x86/setup.S	/^start:$/;"	l
+string	include/multiboot.h	/^  unsigned long string;$/;"	m	struct:module
+strsize	include/multiboot.h	/^  unsigned long strsize;$/;"	m	struct:aout_symbol_table
+tabsize	include/multiboot.h	/^  unsigned long tabsize;$/;"	m	struct:aout_symbol_table
+type	include/multiboot.h	/^  unsigned long type;$/;"	m	struct:memory_map
+u	include/multiboot.h	/^  } u;$/;"	m	struct:multiboot_info	typeref:union:multiboot_info::__anon1
