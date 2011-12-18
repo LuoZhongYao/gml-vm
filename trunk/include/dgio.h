@@ -5,4 +5,5 @@
 #define DGIO_H
 int printk(char *str,...);
 void clear(void);
+void putByte(unsigned char );
 #endif

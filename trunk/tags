@@ -3,22 +3,16 @@
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-$new_env	x86/setup.S	/^$new_env:$/;"	l
+!_TAG_PROGRAM_VERSION	5.8	//
 AS	makefile	/^AS = as$/;"	m
-AS	vm/makefile	/^AS = as$/;"	m
 AS	x86/makefile	/^AS = as$/;"	m
-ASM	vm/multiboot.S	/^#define ASM 1$/;"	d
 ASM	x86/setup.S	/^#define ASM$/;"	d
 AS_OPT	makefile	/^AS_OPT = --32$/;"	m
-AS_OPT	vm/makefile	/^AS_OPT = --32$/;"	m
 AS_OPT	x86/makefile	/^AS_OPT = --32$/;"	m
-BSS_END_ADDR	vm/multiboot.S	/^#define     BSS_END_ADDR   =   _end-0x100000$/;"	d
+BUSY	include/vm/malloc.h	/^        BUSY = 1,$/;"	e	enum:mnode::__anon5
 CC	makefile	/^CC = cc$/;"	m
-CC	vm/makefile	/^CC = cc$/;"	m
 CC	x86/makefile	/^CC = cc$/;"	m
-CC_OPT	makefile	/^CC_OPT = -m32 -c -std=gnu99 -fno-stack-protector -I ..\/include -Wall$/;"	m
-CC_OPT	vm/makefile	/^CC_OPT = -m32 -c -std=gnu99 -fno-stack-protector -I ..\/include -Wall$/;"	m
+CC_OPT	makefile	/^CC_OPT = -m32 -c -std=gnu99 -fno-stack-protector -I include\/ -Wall$/;"	m
 CC_OPT	x86/makefile	/^CC_OPT = -m32 -c -std=gnu99 -fno-stack-protector -I ..\/include -Wall$/;"	m
 CODE_C	include/x86/section.h	25;"	d
 CODE_D	include/x86/section.h	27;"	d
@@ -27,94 +21,214 @@ CODE_READ	include/x86/section.h	24;"	d
 CreateSection	include/x86/section.h	17;"	d
 DATA_B	include/x86/section.h	32;"	d
 DATA_E	include/x86/section.h	30;"	d
-DATA_END_ADDR	vm/multiboot.S	/^#define     DATA_END_ADDR   =   _edata-0x100000$/;"	d
 DATA_G	include/x86/section.h	31;"	d
 DATA_WRITE	include/x86/section.h	29;"	d
+DGIO_H	include/dgio.h	5;"	d
 EXT_C	include/multiboot.h	41;"	d
 EXT_C	include/multiboot.h	43;"	d
+FREE	include/vm/malloc.h	/^        FREE = 0,$/;"	e	enum:mnode::__anon5
 GDT_LEN	x86/setup.S	/^GDT_LEN = gdt_end-gdt_start$/;"	d
-HEAD	vm/makefile	/^HEAD= $/;"	m
 HEAD	x86/makefile	/^HEAD= $/;"	m
+HMEM	kernel/mm.c	/^unsigned long HMEM = 0;             \/\/内存顶端大小$/;"	v
+IDT_ADDR	include/x86/trap.h	7;"	d
+IDT_R0	include/x86/trap.h	12;"	d
+IDT_R1	include/x86/trap.h	13;"	d
+IDT_R2	include/x86/trap.h	14;"	d
+IDT_R3	include/x86/trap.h	15;"	d
+INT_GATE	include/x86/trap.h	9;"	d
+KEN_MODE	kernel/int.S	/^KEN_MODE:   .int  0 $/;"	l
+KERNEL_SPACE	kernel/mm.c	18;"	d	file:
+KER_CODE_SEC	include/vm/kernel.h	6;"	d
+KER_DATA_SEC	include/vm/kernel.h	7;"	d
+KER_MM_SIZE	include/vm/kernel.h	9;"	d
+KMEM	kernel/mm.c	/^unsigned long KMEM = KER_MM_SIZE;            \/\/对等映射的内存大小$/;"	v
+LATCH	kernel/trap.c	10;"	d	file:
 LD	makefile	/^LD = ld$/;"	m
-LD	vm/makefile	/^LD = ld$/;"	m
 LD	x86/makefile	/^LD = ld$/;"	m
 LD_OPT	makefile	/^LD_OPT = -m elf_i386 -Ttext 0x300000$/;"	m
-LD_OPT	vm/makefile	/^LD_OPT = --oformat binary -m elf_i386 $/;"	m
 LD_OPT	x86/makefile	/^LD_OPT = --oformat binary -m elf_i386 $/;"	m
+LMEM	kernel/mm.c	/^unsigned long LMEM = 0x100000;     \/\/低端内存$/;"	v
+MMAP_ADDR	kernel/mm.c	17;"	d	file:
+MM_H	include/vm/mm.h	5;"	d
 MULTIBOOT_BOOTLOADER_MAGIC	include/multiboot.h	34;"	d
-MULTIBOOT_HEADER_ADDR	vm/multiboot.S	/^#define     MULTIBOOT_HEADER_ADDR = multiboot_header - 0x100000$/;"	d
 MULTIBOOT_HEADER_FLAGS	include/multiboot.h	28;"	d
 MULTIBOOT_HEADER_FLAGS	include/multiboot.h	30;"	d
 MULTIBOOT_HEADER_MAGIC	include/multiboot.h	21;"	d
 MULTIBOOT_HEADER_MMAP	include/multiboot.h	24;"	d
-OBJ	makefile	/^OBJ = x86\/setup.o$/;"	m
+NULL	include/stddef.h	3;"	d
+OBJ	makefile	/^OBJ = x86\/setup.o kernel\/init.o kernel\/int.o kernel\/trap.o kernel\/mm.o c\/string.o kernel\/dg.o kernel\/malloc.o$/;"	m
 R0	include/x86/section.h	37;"	d
 R1	include/x86/section.h	38;"	d
 R2	include/x86/section.h	39;"	d
 R3	include/x86/section.h	40;"	d
 SECTION_H	include/x86/section.h	7;"	d
 STACK_SIZE	include/multiboot.h	37;"	d
+STDARG_H	include/stdarg.h	5;"	d
+STRING_H	include/string.h	2;"	d
+TRAP_H	include/x86/trap.h	5;"	d
+TRA_GATE	include/x86/trap.h	10;"	d
+TR_GATE	include/x86/trap.h	11;"	d
 TSS	include/x86/section.h	35;"	d
 TSS_G	include/x86/section.h	34;"	d
 VMDev	makefile	/^VMDev = a.img$/;"	m
 VMgmL	makefile	/^VMgmL = vmgmL$/;"	m
-_start	vm/multiboot.S	/^_start:$/;"	l
+_STDDEF_H	include/stddef.h	2;"	d
+__MALLOC_H__	include/vm/malloc.h	5;"	d
+__VM_H__	include/vm/vm.h	7;"	d
+__va_rounded_size	include/stdarg.h	7;"	d
 _start	x86/setup.S	/^_start:$/;"	l
+add	kernel/malloc.c	/^mlTp add(mlTp mmList,mlTp mm){$/;"	f
 addr	include/multiboot.h	/^  unsigned long addr;$/;"	m	struct:aout_symbol_table
 addr	include/multiboot.h	/^  unsigned long addr;$/;"	m	struct:elf_section_header_table
-aout_sym	include/multiboot.h	/^    aout_symbol_table_t aout_sym;$/;"	m	union:multiboot_info::__anon1
+addr1	include/x86/trap.h	/^    unsigned    short   addr1;$/;"	m	struct:__anon1
+addr2	include/x86/trap.h	/^    unsigned    short   addr2;$/;"	m	struct:__anon1
+aout_sym	include/multiboot.h	/^    aout_symbol_table_t aout_sym;$/;"	m	union:multiboot_info::__anon2
 aout_symbol_table	include/multiboot.h	/^typedef struct aout_symbol_table$/;"	s
 aout_symbol_table_t	include/multiboot.h	/^} aout_symbol_table_t;$/;"	t	typeref:struct:aout_symbol_table
+attr	include/x86/trap.h	/^    unsigned    short   attr;$/;"	m	struct:__anon1
 base_addr_high	include/multiboot.h	/^  unsigned long base_addr_high;$/;"	m	struct:memory_map
 base_addr_low	include/multiboot.h	/^  unsigned long base_addr_low;$/;"	m	struct:memory_map
 boot_device	include/multiboot.h	/^  unsigned long boot_device;$/;"	m	struct:multiboot_info
+bp	include/vm/vm.h	/^    unsigned long bp;$/;"	m	struct:__anon3
 bss_end_addr	include/multiboot.h	/^  unsigned long bss_end_addr;$/;"	m	struct:multiboot_header
 checksum	include/multiboot.h	/^  unsigned long checksum;$/;"	m	struct:multiboot_header
+clear	kernel/dg.c	/^void clear(void){$/;"	f
+cli	include/x86/system.h	21;"	d
+cmain	kernel/init.c	/^int cmain(multiboot_info_t *env){$/;"	f
+cmdT	include/vm/vm.h	/^}cmdT,*cmdTp;$/;"	t	typeref:struct:__anon4
+cmdTp	include/vm/vm.h	/^}cmdT,*cmdTp;$/;"	t	typeref:struct:__anon4
 cmdline	include/multiboot.h	/^  unsigned long cmdline;$/;"	m	struct:multiboot_info
-elf_sec	include/multiboot.h	/^    elf_section_header_table_t elf_sec;$/;"	m	union:multiboot_info::__anon1
+cpuT	include/vm/vm.h	/^}cpuT,*cpuTp;$/;"	t	typeref:struct:__anon3
+cpuTp	include/vm/vm.h	/^}cpuT,*cpuTp;$/;"	t	typeref:struct:__anon3
+create_mm	kernel/mm.c	/^unsigned long *create_mm(void){$/;"	f
+del	kernel/malloc.c	/^mlTp del(mlTp mm){$/;"	f
+des	include/vm/vm.h	/^    unsigned long des;$/;"	m	struct:__anon4
+dg_error_code	kernel/int.S	/^dg_error_code:$/;"	l
+do_no_page	kernel/mm.c	/^void do_no_page(unsigned error,unsigned long addr){$/;"	f
+do_wp_page	kernel/mm.c	/^void do_wp_page(unsigned error,unsigned long addr){$/;"	f
+elf_sec	include/multiboot.h	/^    elf_section_header_table_t elf_sec;$/;"	m	union:multiboot_info::__anon2
 elf_section_header_table	include/multiboot.h	/^typedef struct elf_section_header_table$/;"	s
 elf_section_header_table_t	include/multiboot.h	/^} elf_section_header_table_t;$/;"	t	typeref:struct:elf_section_header_table
 entry_addr	include/multiboot.h	/^  unsigned long entry_addr;$/;"	m	struct:multiboot_header
+error_code	kernel/int.S	/^error_code:$/;"	l
+find	kernel/malloc.c	/^mlTp find(mlTp mmList,unsigned long size){$/;"	f
 flags	include/multiboot.h	/^  unsigned long flags;$/;"	m	struct:multiboot_header
 flags	include/multiboot.h	/^  unsigned long flags;$/;"	m	struct:multiboot_info
+free	kernel/malloc.c	/^void free(void *p){$/;"	f
+free_page	kernel/mm.c	/^int free_page(unsigned long addr){$/;"	f
 gdt	x86/setup.S	/^gdt:$/;"	l
 gdt_end	x86/setup.S	/^gdt_end:$/;"	l
 gdt_start	x86/setup.S	/^gdt_start:$/;"	l
+get_free_page	kernel/mm.c	/^unsigned long get_free_page(void){$/;"	f
 header_addr	include/multiboot.h	/^  unsigned long header_addr;$/;"	m	struct:multiboot_header
+idt	kernel/trap.c	/^const idtTp idt =   (idtTp) IDT_ADDR;$/;"	v
 idt	x86/setup.S	/^idt:$/;"	l
+idtT	include/x86/trap.h	/^}idtT,*idtTp;$/;"	t	typeref:struct:__anon1
+idtTp	include/x86/trap.h	/^}idtT,*idtTp;$/;"	t	typeref:struct:__anon1
+inb	include/x86/io.h	11;"	d
+inb_p	include/x86/io.h	23;"	d
+install_int	kernel/trap.c	/^inline void install_int(unsigned int num,int_codeTp  func,unsigned int section,unsigned short attr){$/;"	f
+int_0	kernel/int.S	/^int_0:$/;"	l
+int_1	kernel/int.S	/^int_1:$/;"	l
+int_11	kernel/int.S	/^int_11:$/;"	l
+int_12	kernel/int.S	/^int_12:$/;"	l
+int_13	kernel/int.S	/^int_13:$/;"	l
+int_15	kernel/int.S	/^int_15:$/;"	l
+int_16	kernel/int.S	/^int_16:$/;"	l
+int_17	kernel/int.S	/^int_17:$/;"	l
+int_18	kernel/int.S	/^int_18:$/;"	l
+int_19	kernel/int.S	/^int_19:$/;"	l
+int_2	kernel/int.S	/^int_2:$/;"	l
+int_3	kernel/int.S	/^int_3:$/;"	l
+int_4	kernel/int.S	/^int_4:$/;"	l
+int_5	kernel/int.S	/^int_5:$/;"	l
+int_6	kernel/int.S	/^int_6:$/;"	l
+int_7	kernel/int.S	/^int_7:$/;"	l
+int_8	kernel/int.S	/^int_8:$/;"	l
+int_9	kernel/int.S	/^int_9:$/;"	l
+int_clock	kernel/int.S	/^int_clock:$/;"	l
+int_codeTp	include/x86/trap.h	/^typedef void (*int_codeTp)(void);$/;"	t
+ip	include/vm/vm.h	/^    unsigned long ip;$/;"	m	struct:__anon3
 length_high	include/multiboot.h	/^  unsigned long length_high;$/;"	m	struct:memory_map
 length_low	include/multiboot.h	/^  unsigned long length_low;$/;"	m	struct:memory_map
 load_addr	include/multiboot.h	/^  unsigned long load_addr;$/;"	m	struct:multiboot_header
 load_end_addr	include/multiboot.h	/^  unsigned long load_end_addr;$/;"	m	struct:multiboot_header
 magic	include/multiboot.h	/^  unsigned long magic;$/;"	m	struct:multiboot_header
+malloc	kernel/malloc.c	/^void *malloc(unsigned long size){$/;"	f
 mem_lower	include/multiboot.h	/^  unsigned long mem_lower;$/;"	m	struct:multiboot_info
 mem_upper	include/multiboot.h	/^  unsigned long mem_upper;$/;"	m	struct:multiboot_info
+memcpy	c/string.c	/^void *memcpy(void *dest,const void *src,int n){$/;"	f
 memory_map	include/multiboot.h	/^typedef struct memory_map$/;"	s
 memory_map_t	include/multiboot.h	/^} memory_map_t;$/;"	t	typeref:struct:memory_map
+memset	c/string.c	/^void *memset(void *dest,int ch,int n){$/;"	f
+mlT	include/vm/malloc.h	/^}mlT,*mlTp;$/;"	t	typeref:struct:mnode
+mlTp	include/vm/malloc.h	/^}mlT,*mlTp;$/;"	t	typeref:struct:mnode
+mm	include/vm/vm.h	/^    unsigned long mm;$/;"	m	struct:__anon3
+mmList	kernel/malloc.c	/^static mlTp mmList = NULL;$/;"	v	file:
+mm_init	kernel/mm.c	/^void mm_init(unsigned long lower,unsigned long upper){$/;"	f
+mmap	kernel/mm.c	/^unsigned char * const mmap = (unsigned char *)MMAP_ADDR;$/;"	v
 mmap_addr	include/multiboot.h	/^  unsigned long mmap_addr;$/;"	m	struct:multiboot_info
+mmap_init	kernel/mm.c	/^void mmap_init(unsigned long addr,unsigned long length){$/;"	f
 mmap_length	include/multiboot.h	/^  unsigned long mmap_length;$/;"	m	struct:multiboot_info
+mnode	include/vm/malloc.h	/^typedef struct mnode{$/;"	s
 mod_end	include/multiboot.h	/^  unsigned long mod_end;$/;"	m	struct:module
 mod_start	include/multiboot.h	/^  unsigned long mod_start;$/;"	m	struct:module
 mods_addr	include/multiboot.h	/^  unsigned long mods_addr;$/;"	m	struct:multiboot_info
 mods_count	include/multiboot.h	/^  unsigned long mods_count;$/;"	m	struct:multiboot_info
 module	include/multiboot.h	/^typedef struct module$/;"	s
 module_t	include/multiboot.h	/^} module_t;$/;"	t	typeref:struct:module
-multiboot_entry	vm/multiboot.S	/^multiboot_entry:$/;"	l
+move_user_mode	include/x86/system.h	1;"	d
 multiboot_header	include/multiboot.h	/^typedef struct multiboot_header$/;"	s
-multiboot_header	vm/multiboot.S	/^multiboot_header:$/;"	l
 multiboot_header	x86/setup.S	/^multiboot_header:$/;"	l
 multiboot_header_t	include/multiboot.h	/^} multiboot_header_t;$/;"	t	typeref:struct:multiboot_header
 multiboot_info	include/multiboot.h	/^typedef struct multiboot_info$/;"	s
 multiboot_info_t	include/multiboot.h	/^} multiboot_info_t;$/;"	t	typeref:struct:multiboot_info
+new_env	x86/setup.S	/^new_env:$/;"	l
+next	include/vm/malloc.h	/^    struct mnode    *next;$/;"	m	struct:mnode	typeref:struct:mnode::mnode
+no_error_code	kernel/int.S	/^no_error_code:$/;"	l
+nop	kernel/trap.c	/^void    nop(void){$/;"	f
+null_int	kernel/int.S	/^null_int:$/;"	l
 num	include/multiboot.h	/^  unsigned long num;$/;"	m	struct:elf_section_header_table
+op	include/vm/vm.h	/^    unsigned long op;$/;"	m	struct:__anon4
+open_pagination	kernel/mm.c	/^unsigned long open_pagination(void){$/;"	f
+outb	include/x86/io.h	8;"	d
+outb_p	include/x86/io.h	17;"	d
+over	x86/setup.S	/^over:$/;"	l
+page_fault	kernel/int.S	/^page_fault:$/;"	l
+print_error	kernel/trap.c	/^void    print_error(int error){$/;"	f
+printk	kernel/dg.c	/^int printk(char *str,...){$/;"	f
+put_page	kernel/mm.c	/^int put_page(unsigned vd,unsigned pd){$/;"	f
+puthex	kernel/dg.c	/^void puthex(unsigned int num){$/;"	f
+refpage	include/x86/system.h	23;"	d
 reserved	include/multiboot.h	/^  unsigned long reserved;$/;"	m	struct:aout_symbol_table
 reserved	include/multiboot.h	/^  unsigned long reserved;$/;"	m	struct:module
+root	include/vm/malloc.h	/^    struct mnode    *root;$/;"	m	struct:mnode	typeref:struct:mnode::mnode
+section	include/x86/trap.h	/^    unsigned    short   section;$/;"	m	struct:__anon1
 shndx	include/multiboot.h	/^  unsigned long shndx;$/;"	m	struct:elf_section_header_table
 size	include/multiboot.h	/^  unsigned long size;$/;"	m	struct:elf_section_header_table
 size	include/multiboot.h	/^  unsigned long size;$/;"	m	struct:memory_map
+size	include/vm/malloc.h	/^    unsigned long   size;$/;"	m	struct:mnode
+sp	include/vm/vm.h	/^    unsigned long sp;$/;"	m	struct:__anon3
+src	include/vm/vm.h	/^    unsigned long src;$/;"	m	struct:__anon4
 start	x86/setup.S	/^start:$/;"	l
+state	include/vm/malloc.h	/^    }state;$/;"	m	struct:mnode	typeref:enum:mnode::__anon5
+sti	include/x86/system.h	20;"	d
+strcpy	c/string.c	/^char *strcpy(char *dest,const char *src){$/;"	f
 string	include/multiboot.h	/^  unsigned long string;$/;"	m	struct:module
 strsize	include/multiboot.h	/^  unsigned long strsize;$/;"	m	struct:aout_symbol_table
 tabsize	include/multiboot.h	/^  unsigned long tabsize;$/;"	m	struct:aout_symbol_table
+trap_init	kernel/trap.c	/^void trap_init(void){$/;"	f
+ts_int	kernel/int.S	/^ts_int:$/;"	l
 type	include/multiboot.h	/^  unsigned long type;$/;"	m	struct:memory_map
-u	include/multiboot.h	/^  } u;$/;"	m	struct:multiboot_info	typeref:union:multiboot_info::__anon1
+u	include/multiboot.h	/^  } u;$/;"	m	struct:multiboot_info	typeref:union:multiboot_info::__anon2
+uget_free_page	kernel/mm.c	/^unsigned long uget_free_page(void){$/;"	f
+un_wp_page	kernel/mm.c	/^unsigned long  un_wp_page(unsigned long page){$/;"	f
+un_wpte_page	kernel/mm.c	/^unsigned long un_wpte_page(unsigned long page){$/;"	f
+va_arg	include/stdarg.h	9;"	d
+va_end	include/stdarg.h	14;"	d
+va_list	include/stdarg.h	/^typedef     void    *va_list;$/;"	t
+va_start	include/stdarg.h	12;"	d
+wait	include/x86/system.h	22;"	d
+write_ch	kernel/dg.c	/^void write_ch(int ch){$/;"	f
+x	kernel/dg.c	/^static int x=0,y=10;$/;"	v	file:
+y	kernel/dg.c	/^static int x=0,y=10;$/;"	v	file:

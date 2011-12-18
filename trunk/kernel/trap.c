@@ -62,9 +62,12 @@ void trap_init(void){
     /*
      *  安装时钟中断,并开启中断允许
      */
-    install_int(0x20,int_clock,KER_CODE_SEC,INT_GATE|IDT_R0);
-    outb_p(inb_p(0x21)&~0x1,0x21);
-    outb_p(inb_p(0x21)&~0x1,0x21);
+    //install_int(0x20,int_clock,KER_CODE_SEC,INT_GATE|IDT_R0);
+    //outb_p(inb_p(0x21)&~0x1,0x21);
+    //outb_p(inb_p(0x21)&~0x1,0x21);
+    install_int(0x23,NCI_int,KER_CODE_SEC,INT_GATE|IDT_R0);
+    outb_p(inb_p(0x21)&~0x8,0x21);
+    //outb_p(inb_p(0xa1)&~0x2,0xa1);
     //安装系统调用中断
     //install_int(0x80,sys_call,KER_CODE_SEC,TRA_GATE|IDT_R3);
 }

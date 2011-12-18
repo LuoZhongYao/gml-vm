@@ -33,12 +33,17 @@ void puthex(unsigned int num){
     }else
         write_ch('0');
 }
+void putByte(unsigned char num){
+        write_ch("0123456789ABCDEF"[(num>>4)&0xF]);
+        write_ch("0123456789ABCDEF"[num&0xF]);
+}
 int printk(char *str,...){
     va_list ap;
     va_start(ap,str);
     while(*str){
         switch(*str){
             case    '\e':puthex(va_arg(ap,unsigned int));str++;break;
+            case '%':
             default:write_ch(*str++); 
         }
     }

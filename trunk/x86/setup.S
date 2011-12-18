@@ -65,6 +65,7 @@ start:
     /* mov     %ebx,multiboot_envp  */
     /* 8259,写过很多次了,懒得在写,不懂的可以google,或者Email我 */
     /* 唯一说一点的就是外部中断0x20~0x30 */
+    /* 高电平触发,为NE2000专门修改的 */
     mov     $0x11,%al
     out     %al,$0x20
     io_delay
@@ -123,7 +124,7 @@ new_env:
     call    cmain
 
 over:
-    hlt
+#hlt
     jmp  over
     /* 设置临时的分页 */
     

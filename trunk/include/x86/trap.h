@@ -51,4 +51,5 @@ extern  void    int_18(void);
 extern  void    int_19(void);
 extern  void    page_fault(void);
 extern  void    trap_init(void);
+extern  void    NCI_int(void);
 #endif
