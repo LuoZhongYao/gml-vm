@@ -7,7 +7,7 @@ megs:100
 
 # filename of ROM images
 romimage: file=/usr/share/bochs/BIOS-bochs-latest
-vgaromimage: file=/usr/share/vgabios/vgabios.bin
+vgaromimage: file=/usr/share/vgabios/VGABIOS-lgpl-latest.bin
 
 # what disk images will be used
 floppya: image="a.img", status=inserted
@@ -20,6 +20,10 @@ floppya: image="a.img", status=inserted
 boot: floppy
 #boot:disk 
 
+#网卡
+ne2k: ioaddr=0x300, irq=3, mac=b0:c4:20:00:00:00, ethmod=linux, ethdev=eth0 
+#ne2k: ioaddr=0x300, irq=3, mac=b0:c4:20:00:00:00, ethmod=null, ethdev=eth0 
+i440fxsupport: enabled=1, slot1=ne2k
 # where do we send log messages?
 #log: out.log
 

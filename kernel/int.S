@@ -8,7 +8,7 @@
 .globl  null_int,ts_int,int_clock
 .globl  int_0,int_1,int_2,int_3,int_4,int_5,int_6,int_7,int_8,int_9
 .globl  int_11,int_12,int_13,int_15,int_16,int_17,int_18,int_19
-.globl  
+.globl  NCI_int,neISR
 .data
 KEN_MODE:   .int  0 
 /*
@@ -20,6 +20,7 @@ KEN_MODE:   .int  0
    *    更好一些.
    */
 int_clock:
+    iret
     pushal
     push    %ds
     push    %es
@@ -51,6 +52,8 @@ int_clock:
 0:
     mov     $0x20,%eax
     outb    %al,$0x20
+    mov     $0xa0,%eax
+    outb    %al,$0x20
     pop     %gs
     pop     %fs
     pop     %es
@@ -62,6 +65,9 @@ int_clock:
    *    这是所有中断的入口形式,她的目的很明确,就是保存环境,初始化段寄存器,并
    *    调用相应的中断处理函数,在trap.c里面实现
    */
+NCI_int:
+    push    $neISR
+    jmp     no_error_code
 ts_int:
     push    $print_error
     jmp     error_code
@@ -178,7 +184,7 @@ error_code:
     push    %eax
     lea     44(%esp),%eax
     push    %eax
-    mov     $0x8,%eax
+    mov     $KER_DATA_SEC,%eax
     mov     %eax,%ds
     mov     %eax,%es
     mov     %eax,%fs
