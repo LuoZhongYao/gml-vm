@@ -13,21 +13,11 @@
 #include    <string.h>
 #include    <stddef.h>
 #include    <ne2k/ne2k.h>
-#include    <802/eth.h>
-
-#define     NET     1
-
-#if NET 
-#define     MAC 0x0000000020c4b0
-#define     MSG "Net Host"
-#else
-#define     MAC 0x0001000020c4b0
-#define     MSG "Host 2 !D:"
-#endif
-#define     IP 0x0101a8c0
-#define     HOST_IP 0x6501a8c0
-unsigned int IPtoMac(unsigned int ip,unsigned long long mac);
-void replayARP(unsigned int ip,unsigned int,unsigned long long ,unsigned long long mac);
+#include    <net/ethernet.h>
+#include    <net/ip.h>
+#include    <vm/msg.h>
+#include    <net/in.h>
+#include    <net/udp.h>
 
 int cmain(multiboot_info_t *env){
     //中断初始化
@@ -40,44 +30,20 @@ int cmain(multiboot_info_t *env){
     else
         return -1;
     //初始化网卡
-    char *p = malloc(1024);
-    unsigned long long s_mac = neInit(p);
-    unsigned long long d_mac = MAC;
-    //ethSend(MSG,d_mac,0x0608,0x200);
-    //IPtoMac(IP,d_mac);
-    extern int T;
-    //printk("Apply Route IP to MAC!\n");
-    //IPtoMac(IP,s_mac);
-    //printk("Apply Host IP to MAC!\n");
-    IPtoMac(HOST_IP,s_mac);
-    int flags = 1;
-    while(1){
-        if(T){
-            if(flags){
-                replayARP(HOST_IP,IP,MAC,0xc773b2272100);
-                printk(p+34);
-                flags = 0;
-            }
-            T = 0;
-        }
-    }
-    for(int i =0xffe;i;i--){
-        IPtoMac(IP,s_mac);
-        /*
-        if(!(i%2000))
-            ethSend(MSG,d_mac,0x200);
-        else if(!(i%4001))
-            ethSend("OKTHYU",d_mac,0x200);
-        //for(int i = 0xfffe;i--;);
-        //printk("DMAC:\e\e\n",*((unsigned int *)(&d_mac)+1),(unsigned int)d_mac);
-        printk(&p[14]);
-        */
-    }
-    //move_user_mode();
+    neInit();
+    msgTp msg = malloc(sizeof(msgT) + 100);
+    msg->len = 100;
+    msg->next = NULL;
+    memcpy(msg->msg,"Hello IP potocol!",17);
+    udpSend(msg,htonl(0xc0a80165),htons(8000),htons(1024));
+    //ipSend(htonl(0xc0a80165),htonl(hostIp()),msg,IPPOTO_UDP);
+    for(int i=0;i<0xFFFFF;i++);
     /*
-    *(unsigned *)0x10000000 = 0xABCEDEF;
-    create_mm();
-    *(unsigned *)0x10000000 = 0x1111111;
+    ipSend(htonl(0xc0a80165),htonl(hostIp()),msg,IPPOTO_UDP);
+    ipSend(htonl(0xc0a80165),htonl(hostIp()),msg,IPPOTO_UDP);
     */
+    while(1){
+        ;//ipSend(htonl(0xc0a80165),htonl(hostIp()),msg,IPPOTO_UDP);
+    }
     return 0;
 }

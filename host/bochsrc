@@ -21,7 +21,7 @@ boot: floppy
 #boot:disk 
 
 #网卡
-ne2k: ioaddr=0x300, irq=3, mac=b0:c4:20:00:00:01, ethmod=linux, ethdev=eth0 
+ne2k: ioaddr=0x300, irq=3, mac=b0:c4:20:00:00:00, ethmod=linux, ethdev=eth0 
 #ne2k: ioaddr=0x300, irq=3, mac=b0:c4:20:00:00:00, ethmod=null, ethdev=eth0 
 i440fxsupport: enabled=1, slot1=ne2k
 # where do we send log messages?

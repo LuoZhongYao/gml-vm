@@ -1,0 +1,3 @@
+FILE:net/ne2k/ne2k.c
+    BUG_NO_RE_INT   :  未添加禁止该中断重入代码
+    BUG_RE_INT      :   和上面对应,允许中断  

@@ -26,16 +26,15 @@ void write_ch(int ch){
         y--;
     }
 }
-void puthex(unsigned int num){
-    if(num){
-        puthex(num>>4);
-        write_ch("0123456789ABCDEF"[num&0xF]);
-    }else
-        write_ch('0');
-}
 void putByte(unsigned char num){
         write_ch("0123456789ABCDEF"[(num>>4)&0xF]);
         write_ch("0123456789ABCDEF"[num&0xF]);
+}
+void puthex(unsigned int num){
+    putByte((num>>24)&0xff);
+    putByte((num>>16)&0xff);
+    putByte((num>>8)&0xff);
+    putByte((num)&0xff);
 }
 int printk(char *str,...){
     va_list ap;

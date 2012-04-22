@@ -2,12 +2,14 @@
  *      汇编不给力
  *      :D
  */
-int T = 0;
 #include    <ne2k/ne2k.h>
 #include    <x86/io.h>
 #include    <dgio.h>
 #include    <vm/malloc.h>
 #include    <x86/system.h>
+#include    <vm/msg.h>
+#include    <string.h>
+#include    <net/ethernet.h>
 //#define     RECV_PACKET     1
 //#define     TRANS_PACKET    0xa
 #define     TRANS_PAGE      0x40   //0x4000~0x4600该地址是NIC的缓冲区,主机内存
@@ -22,7 +24,6 @@ int T = 0;
 
 static unsigned long long MAC = 0;
 static  unsigned char imr = 0x1b;
-static  void *recvBuffer = NULL;
 
 unsigned long long getNICMac(void){return MAC;};
 //static  unsigned char rcr = 0;
@@ -35,22 +36,41 @@ typedef struct{
     unsigned short len;
 }recvHeadT,*recvHeadTp;
 #pragma pack()
+/*
 struct data{
     void *addr;
     unsigned long size;
 };
+*/
+void show(msgTp msg){
+    if(msg != NULL){
+        for(int i=0;i<msg->len;i++){
+            if(!(i%16))
+                printk("\n\e ",i);
+            if((!(i%8))&&(i%16))
+                printk("--");
+            else
+                printk(" ");
+            putByte(msg->msg[i]);
+        }
+        if(msg->next != NULL){
+            printk("\n\n---------NEXT---------");
+            show(msg->next);
+        }
+    }
+}
 typedef struct queue{
-    struct data data;
+    msgTp  msg;
     struct queue *next;
 }queueT,*queueTp;
 static queueTp sendQueue = NULL;
-static queueTp add(queueTp queue,struct data d){
+static queueTp add(queueTp queue,msgTp buf){
     if(queue == NULL){
         queue = malloc(sizeof(queueT));
-        queue->data = d;
+        queue->msg = buf;
         queue->next = NULL;
     }else 
-        queue->next = add(queue->next,d);
+        queue->next = add(queue->next,buf);
     return queue;
 }
 static inline queueTp getLevel(queueTp queue){
@@ -91,12 +111,9 @@ void PCtoNIC(void *src,unsigned short dma,int count){
     //等待写完成
     while(!(NE_RDC & neGetIntState()));
     neSetIntState(NE_RDC);
-    //clc();
-    
 }
-unsigned long long neInit(void *recv){
+unsigned long long neInit(void){
     unsigned char mac[12] = {0};
-    recvBuffer = recv;
     neCmd(NE_DMA_ABORT|NE_STOP);                    		//停止运行
     //字长,高位在15-8,16位DMA传送,回路检测,自动远程操作
     neSetDataConfig(NE_WTS|NE_LS|NE_ARM|NE_BOS); 	//配置数据寄存器
@@ -110,8 +127,8 @@ unsigned long long neInit(void *recv){
     neSetCurrnet(RECV_PAGE+1);
     neSetIntState(0xff);                    //中断状态复位
     neSetIntMask(imr);                      //终端掩码,内容是什么我也不知道
-    //neSetTransferConfig(NE_LB00);           //进入正常模式,NIC可以工作了
-    neCmd(NE_DMA_ABORT|NE_START);                    		//停止运行
+    //neSetTransferConfig(NE_LB00);         //进入正常模式,NIC可以工作了
+    neCmd(NE_DMA_ABORT|NE_START);          	//停止运行
     //读设置取MAC地址
     NICtoPC(mac,0,12);
     mac[1] = mac[2];
@@ -163,44 +180,41 @@ void Transfer(void *buf,unsigned short addr,int count,TransferCmd cmd){
     //clc();
 }
 */
-void neSend(void *src,const int count){
-    struct data data = {src,count};
+void neSend(msgTp buf){
+
     cli();
-    if(0x26 == inb(COMMAND)){
-        sendQueue = add(sendQueue,data);
-    }else{
-        printk("SEND");
-       for(int i = 0;i<count;i++){
-           if(!(i%16))
-               printk("\n\e: ",i);
-           putByte(*(unsigned char *)(src+i));
-           printk(" ");
-       }
-       printk("\n");
-        PCtoNIC(src,TRANS_PAGE<<8,count);
-        neSetTransferPage(TRANS_PAGE);
-        neSetTransferByteCount(count);
-        //neSetByteCount(count);
-        neSendPack();
-        //neSetIntState(NE_ISR_PTX);
-        //printk("TSR:\e",neGetTransferState());
+    //正在发送,则将当前包加入发送队列
+    if(buf != NULL){
+        if(0x26 == inb(COMMAND)){
+            sendQueue = add(sendQueue,buf);
+        }else{
+            //printk("\nsendPack");
+            //show(buf);
+            unsigned short count = 0;
+            while(buf != NULL){
+                PCtoNIC(buf->msg,(TRANS_PAGE<<8) + count,buf->len);
+                count += buf->len;
+                buf = buf->next;
+            }
+            neSendPack(TRANS_PAGE,count);
+        }
     }
-    //printk("T ISR:\e\n",neGetIntState());
     sti();
 }
 /*
  *      返回接收的字节数,为-1则表明接收失败.
  */
-int neRecv(void *dest){
+msgTp neRecv(void){
     unsigned char bound;
     unsigned char currnet;
+    msgTp   buf = NULL;
     recvHeadT recv;
 
     bound = neGetBoundary() + 1;
     currnet = neGetCurrnet();
     if(bound > RECV_PAGE_END)
         bound = RECV_PAGE;
-   
+
     //有数据在NIC DMA中 
     if(bound != currnet){
         NICtoPC(&recv,bound<<8,sizeof(recvHeadT));
@@ -211,61 +225,51 @@ int neRecv(void *dest){
         recv.len -= 4;
         //接收状态错误,下一页指针错误,长度错误都丢弃所有的包
         if(recv.next>RECV_PAGE_END||recv.next<RECV_PAGE||recv.len>0x600){
-           neSetCurrnet(RECV_PAGE);
-           neSetBoundary(RECV_PAGE_END);
-           return -1;
+            neSetCurrnet(RECV_PAGE);
+            neSetBoundary(RECV_PAGE_END);
+            return NULL;
         }else{
-            NICtoPC(dest,(bound<<8)|sizeof(recvHeadT),recv.len);
-            neSetBoundary((recv.next-1));
-            return recv.len;
+            buf = malloc(sizeof(msgT) + recv.len);
+            if(buf != NULL){
+                buf->next = NULL;
+                buf->len = recv.len;
+                NICtoPC(buf->msg,(bound<<8)|sizeof(recvHeadT),buf->len);
+                neSetBoundary((recv.next-1));
+            }
         }
     }
-    return -1;
+    return buf;
 }
 void neISR(void){
     cli();
     int state = 0;
-    //printk("Into neISR\n");
     queueTp     queue = NULL;
-    //outb(0xbc,0x21);
+    //该部分需添加禁止该中断重入
+#define BUG_NO_RE_INT
     sti();
     state = neGetIntState();
     if(NE_ISR_PRX & state){
-        T = 1;
-        //printk("RECV_PACKET!\n");
-       int size = neRecv(recvBuffer);
-       for(int i = 0;i<size;i++){
-           if(!(i%16))
-               printk("\n\e: ",i);
-           putByte(*(unsigned char *)(recvBuffer+i));
-           printk(" ");
-       }
-       printk("\n");
+        msgTp msg = neRecv();
+        //show(msg);
+        ethRecv(msg);
+        //sendMSG(msg);
     }else if(NE_ISR_PTX & state){
-        //outb(0xa,INTERRUPTSTATUS);
         if(0x38 != inb(TRANSMITSTATUS)){
         }
-        /*  ------------------------  */     
-        //这里怎么回事,如果队列为空,不应该跳出循环吗?
         if(NULL != (queue = getLevel(sendQueue))){
-            neSend(queue->data.addr,queue->data.size);
+            neSend(queue->msg);
             sendQueue = del(sendQueue);
         }
     }
     neSetIntState(state);
     neSetIntMask(0);
     cli();
-    //outb(0x21,0xb4);
-    //outb(~2,0xa1);
+    //该部分添加允许本中断
+#define BUG_RE_INT
     outb(0x20,0xa0);
     outb(0x20,0x20);
-    /*
-    */
-    /*
-       outb(0x63,0x20);
-       outb(0x63,0xa0);
-       */
     neSetIntMask(imr);
     neSetIntState(state);
     sti();
 }
+
