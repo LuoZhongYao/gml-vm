@@ -4,30 +4,86 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+ARPHRD_APPLETLK	include/net/arp.h	32;"	d
+ARPHRD_ARCNET	include/net/arp.h	31;"	d
+ARPHRD_ATM	include/net/arp.h	34;"	d
+ARPHRD_AX25	include/net/arp.h	27;"	d
+ARPHRD_CHAOS	include/net/arp.h	29;"	d
+ARPHRD_DLCI	include/net/arp.h	33;"	d
+ARPHRD_EETHER	include/net/arp.h	26;"	d
+ARPHRD_ETHER	include/net/arp.h	25;"	d
+ARPHRD_EUI64	include/net/arp.h	37;"	d
+ARPHRD_IEEE1394	include/net/arp.h	36;"	d
+ARPHRD_IEEE802	include/net/arp.h	30;"	d
+ARPHRD_INFINIBAND	include/net/arp.h	38;"	d
+ARPHRD_METRICOM	include/net/arp.h	35;"	d
+ARPHRD_NETROM	include/net/arp.h	24;"	d
+ARPHRD_PRONET	include/net/arp.h	28;"	d
+ARPHeader	include/net/arp.h	/^}ARPHeader;$/;"	t	typeref:struct:__anon2
+ARPOP_InREPLY	include/net/arp.h	46;"	d
+ARPOP_InREQUEST	include/net/arp.h	45;"	d
+ARPOP_NAK	include/net/arp.h	47;"	d
+ARPOP_REPLY	include/net/arp.h	42;"	d
+ARPOP_REQUEST	include/net/arp.h	41;"	d
+ARPOP_RREPLY	include/net/arp.h	44;"	d
+ARPOP_RREQUEST	include/net/arp.h	43;"	d
+ARPTable	net/arp.c	/^}*ARPTable,ARPTableT;$/;"	t	typeref:struct:__anon12	file:
+ARPTableT	net/arp.c	/^}*ARPTable,ARPTableT;$/;"	t	typeref:struct:__anon12	file:
+ARP_PACKET	include/net/802/eth.h	4;"	d
+ARP_TYPE	net/ARP.c	8;"	d	file:
 AS	makefile	/^AS = as$/;"	m
 AS	x86/makefile	/^AS = as$/;"	m
 ASM	x86/setup.S	/^#define ASM$/;"	d
 AS_OPT	makefile	/^AS_OPT = --32$/;"	m
 AS_OPT	x86/makefile	/^AS_OPT = --32$/;"	m
-BUSY	include/vm/malloc.h	/^        BUSY = 1,$/;"	e	enum:mnode::__anon5
+BOUNDARY	include/net/ne2k/ne2k.h	15;"	d
+BUG_NO_RE_INT	net/ne2k/ne2k.c	248;"	d	file:
+BUG_RE_INT	net/ne2k/ne2k.c	269;"	d	file:
+BUSY	include/vm/malloc.h	/^        BUSY = 0xFB,$/;"	e	enum:mnode::__anon10
 CC	makefile	/^CC = cc$/;"	m
 CC	x86/makefile	/^CC = cc$/;"	m
-CC_OPT	makefile	/^CC_OPT = -m32 -c -std=gnu99 -fno-stack-protector -I include\/ -Wall$/;"	m
+CC_OPT	makefile	/^CC_OPT =$(KN_CC) $(NET_CC) $(GLIB_CC)#-m32 -c -std=gnu99 -fno-stack-protector -I include\/ -Wall$/;"	m
 CC_OPT	x86/makefile	/^CC_OPT = -m32 -c -std=gnu99 -fno-stack-protector -I ..\/include -Wall$/;"	m
 CODE_C	include/x86/section.h	25;"	d
 CODE_D	include/x86/section.h	27;"	d
 CODE_G	include/x86/section.h	26;"	d
 CODE_READ	include/x86/section.h	24;"	d
+COMMAND	include/net/ne2k/ne2k.h	12;"	d
+CRC_TALLY	include/net/ne2k/ne2k.h	34;"	d
+CRDMA0	include/net/ne2k/ne2k.h	24;"	d
+CRDMA1	include/net/ne2k/ne2k.h	26;"	d
+CURRENT	include/net/ne2k/ne2k.h	22;"	d
 CreateSection	include/x86/section.h	17;"	d
+DATACONFIGURATION	include/net/ne2k/ne2k.h	33;"	d
 DATA_B	include/x86/section.h	32;"	d
 DATA_E	include/x86/section.h	30;"	d
 DATA_G	include/x86/section.h	31;"	d
 DATA_WRITE	include/x86/section.h	29;"	d
 DGIO_H	include/dgio.h	5;"	d
+Device	include/vm/dev.h	/^}*Device;$/;"	t	typeref:struct:__anon6
+ETHERTYPE_AARP	include/net/ethernet.h	29;"	d
+ETHERTYPE_ARP	include/net/ethernet.h	26;"	d
+ETHERTYPE_AT	include/net/ethernet.h	28;"	d
+ETHERTYPE_IP	include/net/ethernet.h	25;"	d
+ETHERTYPE_IPV6	include/net/ethernet.h	32;"	d
+ETHERTYPE_IPX	include/net/ethernet.h	31;"	d
+ETHERTYPE_LOOPBACK	include/net/ethernet.h	33;"	d
+ETHERTYPE_PUP	include/net/ethernet.h	23;"	d
+ETHERTYPE_REVARP	include/net/ethernet.h	27;"	d
+ETHERTYPE_SPRITE	include/net/ethernet.h	24;"	d
+ETHERTYPE_VLAN	include/net/ethernet.h	30;"	d
+ETH_ALEN	include/net/ethernet.h	9;"	d
 EXT_C	include/multiboot.h	41;"	d
 EXT_C	include/multiboot.h	43;"	d
-FREE	include/vm/malloc.h	/^        FREE = 0,$/;"	e	enum:mnode::__anon5
+Element	include/glib/list.h	/^typedef void *Element;$/;"	t
+EthernetHeader	include/net/ethernet.h	/^}EthernetHeader; $/;"	t	typeref:struct:__anon3
+FAE_TALLY	include/net/ne2k/ne2k.h	32;"	d
+FREE	include/vm/malloc.h	/^        FREE = 0xFE,$/;"	e	enum:mnode::__anon10
 GDT_LEN	x86/setup.S	/^GDT_LEN = gdt_end-gdt_start$/;"	d
+GLIB_CC	makefile	/^GLIB_CC = -I include\/glib\/$/;"	m
+GLIB_DIR	makefile	/^GLIB_DIR = glib$/;"	m
+GLIB_LD	makefile	/^GLIB_LD = $/;"	m
+GLIB_OBJ	makefile	/^GLIB_OBJ = glib\/list.o$/;"	m
 HEAD	x86/makefile	/^HEAD= $/;"	m
 HMEM	kernel/mm.c	/^unsigned long HMEM = 0;             \/\/内存顶端大小$/;"	v
 IDT_ADDR	include/x86/trap.h	7;"	d
@@ -35,19 +91,44 @@ IDT_R0	include/x86/trap.h	12;"	d
 IDT_R1	include/x86/trap.h	13;"	d
 IDT_R2	include/x86/trap.h	14;"	d
 IDT_R3	include/x86/trap.h	15;"	d
+INTERRUPTMASK	include/net/ne2k/ne2k.h	35;"	d
+INTERRUPTSTATUS	include/net/ne2k/ne2k.h	21;"	d
 INT_GATE	include/x86/trap.h	9;"	d
+IOPORT	include/net/ne2k/ne2k.h	37;"	d
+IPDatagram	include/net/ip.h	/^}*IPDatagram;$/;"	t	typeref:struct:__anon1
+IPPOTO_ICMP	include/net/ip.h	28;"	d
+IPPOTO_IGMP	include/net/ip.h	29;"	d
+IPPOTO_IGRP	include/net/ip.h	32;"	d
+IPPOTO_TCP	include/net/ip.h	30;"	d
+IPPOTO_UDP	include/net/ip.h	31;"	d
+IP_PACKET	include/net/802/eth.h	3;"	d
+IPtoMac	net/ARP.c	/^unsigned long long IPtoMac(unsigned int ip,unsigned long long mac){$/;"	f
 KEN_MODE	kernel/int.S	/^KEN_MODE:   .int  0 $/;"	l
 KERNEL_SPACE	kernel/mm.c	18;"	d	file:
 KER_CODE_SEC	include/vm/kernel.h	6;"	d
 KER_DATA_SEC	include/vm/kernel.h	7;"	d
 KER_MM_SIZE	include/vm/kernel.h	9;"	d
 KMEM	kernel/mm.c	/^unsigned long KMEM = KER_MM_SIZE;            \/\/对等映射的内存大小$/;"	v
+KN_CC	makefile	/^KN_CC = -m32 -c -std=gnu99 -fno-stack-protector -I include\/ -Wall$/;"	m
+KN_LD	makefile	/^KN_LD = -m elf_i386 -Ttext 0x300000$/;"	m
+KN_OBJ	makefile	/^KN_OBJ = x86\/setup.o kernel\/init.o kernel\/int.o kernel\/trap.o kernel\/mm.o c\/string.o kernel\/dg.o kernel\/malloc.o kernel\/msg.o$/;"	m
 LATCH	kernel/trap.c	10;"	d	file:
 LD	makefile	/^LD = ld$/;"	m
 LD	x86/makefile	/^LD = ld$/;"	m
-LD_OPT	makefile	/^LD_OPT = -m elf_i386 -Ttext 0x300000$/;"	m
+LD_OPT	makefile	/^LD_OPT = $(KN_LD) $(NET_LD) $(GLIB_LD)#-m elf_i386 -Ttext 0x300000$/;"	m
 LD_OPT	x86/makefile	/^LD_OPT = --oformat binary -m elf_i386 $/;"	m
 LMEM	kernel/mm.c	/^unsigned long LMEM = 0x100000;     \/\/低端内存$/;"	v
+List	include/glib/list.h	/^typedef struct list *List;$/;"	t	typeref:struct:list
+MAC	net/ne2k/ne2k.c	/^static unsigned long long MAC = 0;$/;"	v	file:
+MAR0	include/net/ne2k/ne2k.h	46;"	d
+MAR1	include/net/ne2k/ne2k.h	47;"	d
+MAR2	include/net/ne2k/ne2k.h	48;"	d
+MAR3	include/net/ne2k/ne2k.h	49;"	d
+MAR4	include/net/ne2k/ne2k.h	50;"	d
+MAR5	include/net/ne2k/ne2k.h	51;"	d
+MAR6	include/net/ne2k/ne2k.h	52;"	d
+MAR7	include/net/ne2k/ne2k.h	53;"	d
+MISS_PKT_TALLY	include/net/ne2k/ne2k.h	36;"	d
 MMAP_ADDR	kernel/mm.c	17;"	d	file:
 MM_H	include/vm/mm.h	5;"	d
 MULTIBOOT_BOOTLOADER_MAGIC	include/multiboot.h	34;"	d
@@ -55,16 +136,108 @@ MULTIBOOT_HEADER_FLAGS	include/multiboot.h	28;"	d
 MULTIBOOT_HEADER_FLAGS	include/multiboot.h	30;"	d
 MULTIBOOT_HEADER_MAGIC	include/multiboot.h	21;"	d
 MULTIBOOT_HEADER_MMAP	include/multiboot.h	24;"	d
+NCI_int	kernel/int.S	/^NCI_int:$/;"	l
+NCR	include/net/ne2k/ne2k.h	19;"	d
+NET_CC	makefile	/^NET_CC = -I include\/net\/$/;"	m
+NET_DIR	makefile	/^NET_DIR = net$/;"	m
+NET_LD	makefile	/^NET_LD = $/;"	m
+NET_OBJ	makefile	/^NET_OBJ = $(NET_DIR)\/ne2k\/ne2k.o $(NET_DIR)\/ethernet.o $(NET_DIR)\/arp.o $(NET_DIR)\/ip.o$/;"	m
+NE_AB	include/net/ne2k/ne2k.h	153;"	d
+NE_ABT	include/net/ne2k/ne2k.h	143;"	d
+NE_AM	include/net/ne2k/ne2k.h	154;"	d
+NE_AR	include/net/ne2k/ne2k.h	152;"	d
+NE_ARM	include/net/ne2k/ne2k.h	122;"	d
+NE_ATB	include/net/ne2k/ne2k.h	136;"	d
+NE_BOS	include/net/ne2k/ne2k.h	119;"	d
+NE_CDH	include/net/ne2k/ne2k.h	145;"	d
+NE_CNT	include/net/ne2k/ne2k.h	111;"	d
+NE_COK	include/net/ne2k/ne2k.h	142;"	d
+NE_CRS	include/net/ne2k/ne2k.h	144;"	d
+NE_DFF	include/net/ne2k/ne2k.h	166;"	d
+NE_DIS	include/net/ne2k/ne2k.h	165;"	d
+NE_DMA_ABORT	include/net/ne2k/ne2k.h	86;"	d
+NE_FAE	include/net/ne2k/ne2k.h	162;"	d
+NE_FT0	include/net/ne2k/ne2k.h	123;"	d
+NE_FT1	include/net/ne2k/ne2k.h	124;"	d
+NE_FT12	include/net/ne2k/ne2k.h	126;"	d
+NE_FT8	include/net/ne2k/ne2k.h	125;"	d
+NE_ISR_PRX	include/net/ne2k/ne2k.h	106;"	d
+NE_ISR_PTX	include/net/ne2k/ne2k.h	107;"	d
+NE_LAS	include/net/ne2k/ne2k.h	120;"	d
+NE_LB00	include/net/ne2k/ne2k.h	132;"	d
+NE_LB01	include/net/ne2k/ne2k.h	133;"	d
+NE_LB10	include/net/ne2k/ne2k.h	134;"	d
+NE_LB11	include/net/ne2k/ne2k.h	135;"	d
+NE_LS	include/net/ne2k/ne2k.h	121;"	d
+NE_MON	include/net/ne2k/ne2k.h	156;"	d
+NE_MPA	include/net/ne2k/ne2k.h	163;"	d
+NE_NO_DMA	include/net/ne2k/ne2k.h	82;"	d
+NE_OFST	include/net/ne2k/ne2k.h	137;"	d
+NE_OVW	include/net/ne2k/ne2k.h	110;"	d
+NE_OWC	include/net/ne2k/ne2k.h	146;"	d
+NE_PAGE00	include/net/ne2k/ne2k.h	87;"	d
+NE_PAGE01	include/net/ne2k/ne2k.h	88;"	d
+NE_PAGE02	include/net/ne2k/ne2k.h	89;"	d
+NE_PAGE03	include/net/ne2k/ne2k.h	90;"	d
+NE_PHY	include/net/ne2k/ne2k.h	164;"	d
+NE_PRO	include/net/ne2k/ne2k.h	155;"	d
+NE_RCR_CONFIG	include/net/ne2k/ne2k.h	150;"	d
+NE_RDC	include/net/ne2k/ne2k.h	112;"	d
+NE_READ_DMA	include/net/ne2k/ne2k.h	83;"	d
+NE_REST	include/net/ne2k/ne2k.h	113;"	d
+NE_RSR_CRC	include/net/ne2k/ne2k.h	161;"	d
+NE_RSR_PRX	include/net/ne2k/ne2k.h	160;"	d
+NE_RXE	include/net/ne2k/ne2k.h	108;"	d
+NE_SEND	include/net/ne2k/ne2k.h	81;"	d
+NE_SEND_PCK	include/net/ne2k/ne2k.h	85;"	d
+NE_SEP	include/net/ne2k/ne2k.h	151;"	d
+NE_START	include/net/ne2k/ne2k.h	80;"	d
+NE_STOP	include/net/ne2k/ne2k.h	79;"	d
+NE_TCR_COMFIG	include/net/ne2k/ne2k.h	130;"	d
+NE_TCR_CRC	include/net/ne2k/ne2k.h	131;"	d
+NE_TSR_PTX	include/net/ne2k/ne2k.h	141;"	d
+NE_TXE	include/net/ne2k/ne2k.h	109;"	d
+NE_WRITE_DMA	include/net/ne2k/ne2k.h	84;"	d
+NE_WTS	include/net/ne2k/ne2k.h	118;"	d
+NICtoPC	net/ne2k/ne2k.c	/^void NICtoPC(void *dest,unsigned short dma,int count){$/;"	f
 NULL	include/stddef.h	3;"	d
-OBJ	makefile	/^OBJ = x86\/setup.o kernel\/init.o kernel\/int.o kernel\/trap.o kernel\/mm.o c\/string.o kernel\/dg.o kernel\/malloc.o$/;"	m
+Node	include/glib/list.h	/^}*Node;$/;"	t	typeref:struct:node
+OBJ	makefile	/^OBJ = $(KN_OBJ) $(NET_OBJ) $(GLIB_OBJ)#x86\/setup.o kernel\/init.o kernel\/int.o kernel\/trap.o kernel\/mm.o c\/string.o kernel\/dg.o kernel\/malloc.o ne2000\/ne2000.o net802\/eth.o$/;"	m
+PAGESTART	include/net/ne2k/ne2k.h	13;"	d
+PAGESTOP	include/net/ne2k/ne2k.h	14;"	d
+PAR0	include/net/ne2k/ne2k.h	40;"	d
+PAR1	include/net/ne2k/ne2k.h	41;"	d
+PAR2	include/net/ne2k/ne2k.h	42;"	d
+PAR3	include/net/ne2k/ne2k.h	43;"	d
+PAR4	include/net/ne2k/ne2k.h	44;"	d
+PAR5	include/net/ne2k/ne2k.h	45;"	d
+PCtoNIC	net/ne2k/ne2k.c	/^void PCtoNIC(void *src,unsigned short dma,int count){$/;"	f
 R0	include/x86/section.h	37;"	d
 R1	include/x86/section.h	38;"	d
 R2	include/x86/section.h	39;"	d
 R3	include/x86/section.h	40;"	d
+RARP_PACKET	include/net/802/eth.h	5;"	d
+RECEIVECONFIGURATION	include/net/ne2k/ne2k.h	30;"	d
+RECEIVESTATUS	include/net/ne2k/ne2k.h	29;"	d
+RECV_PAGE	net/ne2k/ne2k.c	16;"	d	file:
+RECV_PAGE	net/ne2k/ne2k_dev.c	11;"	d	file:
+RECV_PAGE_END	net/ne2k/ne2k.c	17;"	d	file:
+RECV_PAGE_END	net/ne2k/ne2k_dev.c	12;"	d	file:
+REMOTEBYTECOUNT0	include/net/ne2k/ne2k.h	27;"	d
+REMOTEBYTECOUNT1	include/net/ne2k/ne2k.h	28;"	d
+REMOTESTARTADDRESS0	include/net/ne2k/ne2k.h	23;"	d
+REMOTESTARTADDRESS1	include/net/ne2k/ne2k.h	25;"	d
 SECTION_H	include/x86/section.h	7;"	d
 STACK_SIZE	include/multiboot.h	37;"	d
 STDARG_H	include/stdarg.h	5;"	d
 STRING_H	include/string.h	2;"	d
+TRANSMITBYTECOUNT0	include/net/ne2k/ne2k.h	18;"	d
+TRANSMITBYTECOUNT1	include/net/ne2k/ne2k.h	20;"	d
+TRANSMITCONFIGURATION	include/net/ne2k/ne2k.h	31;"	d
+TRANSMITPAGE	include/net/ne2k/ne2k.h	17;"	d
+TRANSMITSTATUS	include/net/ne2k/ne2k.h	16;"	d
+TRANS_PAGE	net/ne2k/ne2k.c	15;"	d	file:
+TRANS_PAGE	net/ne2k/ne2k_dev.c	10;"	d	file:
 TRAP_H	include/x86/trap.h	5;"	d
 TRA_GATE	include/x86/trap.h	10;"	d
 TR_GATE	include/x86/trap.h	11;"	d
@@ -73,60 +246,125 @@ TSS_G	include/x86/section.h	34;"	d
 VMDev	makefile	/^VMDev = a.img$/;"	m
 VMgmL	makefile	/^VMgmL = vmgmL$/;"	m
 _STDDEF_H	include/stddef.h	2;"	d
+__ARP_H__	include/net/arp.h	7;"	d
+__DEV_H__	include/vm/dev.h	4;"	d
+__ETHERNET_H__	include/net/ethernet.h	7;"	d
+__ETH_H__	include/net/802/eth.h	2;"	d
+__GLIB_H__	include/glib/glib.h	7;"	d
+__IP_H__	include/net/ip.h	5;"	d
+__LIST_H__	include/glib/list.h	4;"	d
 __MALLOC_H__	include/vm/malloc.h	5;"	d
+__NE3000_H__	include/net/ne2k/ne2k.h	7;"	d
+__NET_H__	include/vm/msg.h	9;"	d
 __VM_H__	include/vm/vm.h	7;"	d
 __va_rounded_size	include/stdarg.h	7;"	d
+_add	glib/list.c	/^static void _add(List this,Element e){$/;"	f	file:
+_addLast	glib/list.c	/^static void _addLast(List this,Element e){$/;"	f	file:
+_find	glib/list.c	/^static Node _find(List this,void *e){$/;"	f	file:
+_first	glib/list.c	/^static Node _first(List this){$/;"	f	file:
+_forEach	glib/list.c	/^static void _forEach(List this,void(*backfunc)(Node)){$/;"	f	file:
+_last	glib/list.c	/^static Node _last(List this){$/;"	f	file:
+_remove	glib/list.c	/^static void _remove(List this){$/;"	f	file:
+_removeLast	glib/list.c	/^static void _removeLast(List this){$/;"	f	file:
 _start	x86/setup.S	/^_start:$/;"	l
-add	kernel/malloc.c	/^mlTp add(mlTp mmList,mlTp mm){$/;"	f
+add	include/glib/list.h	/^    void (*add)(List this,Element);      \/\/添加元素到列表头.$/;"	m	struct:list
+add	kernel/malloc.c	/^static mlTp add(mlTp ml,mlTp mm){$/;"	f	file:
+add	net/ne2k/ne2k.c	/^static queueTp add(queueTp queue,msgTp buf){$/;"	f	file:
+addLast	include/glib/list.h	/^    void (*addLast)(List this,Element);  \/\/添加元素到列表尾部.$/;"	m	struct:list
 addr	include/multiboot.h	/^  unsigned long addr;$/;"	m	struct:aout_symbol_table
 addr	include/multiboot.h	/^  unsigned long addr;$/;"	m	struct:elf_section_header_table
-addr1	include/x86/trap.h	/^    unsigned    short   addr1;$/;"	m	struct:__anon1
-addr2	include/x86/trap.h	/^    unsigned    short   addr2;$/;"	m	struct:__anon1
-aout_sym	include/multiboot.h	/^    aout_symbol_table_t aout_sym;$/;"	m	union:multiboot_info::__anon2
+addr1	include/x86/trap.h	/^    unsigned    short   addr1;$/;"	m	struct:__anon4
+addr2	include/x86/trap.h	/^    unsigned    short   addr2;$/;"	m	struct:__anon4
+aout_sym	include/multiboot.h	/^    aout_symbol_table_t aout_sym;$/;"	m	union:multiboot_info::__anon5
 aout_symbol_table	include/multiboot.h	/^typedef struct aout_symbol_table$/;"	s
 aout_symbol_table_t	include/multiboot.h	/^} aout_symbol_table_t;$/;"	t	typeref:struct:aout_symbol_table
-attr	include/x86/trap.h	/^    unsigned    short   attr;$/;"	m	struct:__anon1
+arpHeadT	net/ARP.c	/^}arpHeadT,*arpHeadTp;$/;"	t	typeref:struct:__anon11	file:
+arpHeadTp	net/ARP.c	/^}arpHeadT,*arpHeadTp;$/;"	t	typeref:struct:__anon11	file:
+arpRecv	net/arp.c	/^void arpRecv(ARPHeader *arpHeader){$/;"	f
+arpReply	net/arp.c	/^static void arpReply(ARPHeader *arp){$/;"	f	file:
+arpRequest	net/arp.c	/^static void arpRequest(unsigned int ip){$/;"	f	file:
+arpTable	net/arp.c	/^static List arpTable = NULL;$/;"	v	file:
+attr	include/x86/trap.h	/^    unsigned    short   attr;$/;"	m	struct:__anon4
 base_addr_high	include/multiboot.h	/^  unsigned long base_addr_high;$/;"	m	struct:memory_map
 base_addr_low	include/multiboot.h	/^  unsigned long base_addr_low;$/;"	m	struct:memory_map
 boot_device	include/multiboot.h	/^  unsigned long boot_device;$/;"	m	struct:multiboot_info
-bp	include/vm/vm.h	/^    unsigned long bp;$/;"	m	struct:__anon3
+bp	include/vm/vm.h	/^    unsigned long bp;$/;"	m	struct:__anon8
 bss_end_addr	include/multiboot.h	/^  unsigned long bss_end_addr;$/;"	m	struct:multiboot_header
+check	include/net/ip.h	/^    unsigned short check;         \/\/校验和$/;"	m	struct:__anon1
+checkSum	net/ip.c	/^unsigned short checkSum(unsigned short *src,int lenght){$/;"	f
 checksum	include/multiboot.h	/^  unsigned long checksum;$/;"	m	struct:multiboot_header
+clean	kernel/malloc.c	/^static mlTp clean(mlTp ml){$/;"	f	file:
 clear	kernel/dg.c	/^void clear(void){$/;"	f
 cli	include/x86/system.h	21;"	d
 cmain	kernel/init.c	/^int cmain(multiboot_info_t *env){$/;"	f
-cmdT	include/vm/vm.h	/^}cmdT,*cmdTp;$/;"	t	typeref:struct:__anon4
-cmdTp	include/vm/vm.h	/^}cmdT,*cmdTp;$/;"	t	typeref:struct:__anon4
+cmdT	include/vm/vm.h	/^}cmdT,*cmdTp;$/;"	t	typeref:struct:__anon9
+cmdTp	include/vm/vm.h	/^}cmdT,*cmdTp;$/;"	t	typeref:struct:__anon9
 cmdline	include/multiboot.h	/^  unsigned long cmdline;$/;"	m	struct:multiboot_info
-cpuT	include/vm/vm.h	/^}cpuT,*cpuTp;$/;"	t	typeref:struct:__anon3
-cpuTp	include/vm/vm.h	/^}cpuT,*cpuTp;$/;"	t	typeref:struct:__anon3
+compare	include/glib/list.h	/^    int  (*compare)(void *a,void* b);    \/\/节点比较,=0,相等;小于0,b<a;大于0,b>a$/;"	m	struct:list
+cpuT	include/vm/vm.h	/^}cpuT,*cpuTp;$/;"	t	typeref:struct:__anon8
+cpuTp	include/vm/vm.h	/^}cpuT,*cpuTp;$/;"	t	typeref:struct:__anon8
 create_mm	kernel/mm.c	/^unsigned long *create_mm(void){$/;"	f
-del	kernel/malloc.c	/^mlTp del(mlTp mm){$/;"	f
-des	include/vm/vm.h	/^    unsigned long des;$/;"	m	struct:__anon4
+dHost	include/net/arp.h	/^    unsigned char  dHost[ETH_ALEN]; \/\/接收端以太网地址$/;"	m	struct:__anon2
+dHost	include/net/ethernet.h	/^    unsigned char dHost[ETH_ALEN];  \/\/目的主机$/;"	m	struct:__anon3
+dIP	include/net/arp.h	/^    unsigned int   dIP;             \/\/接收端IP地址$/;"	m	struct:__anon2
+dIP	include/net/ip.h	/^    unsigned int dIP;           \/\/目的IP$/;"	m	struct:__anon1
+data	include/glib/glib.h	/^    void *data;$/;"	m	struct:list
+data	include/net/ip.h	/^    unsigned char  data[0];       \/\/选项(可选),数据$/;"	m	struct:__anon1
+deList	glib/list.c	/^extern void deList(List this){$/;"	f
+del	kernel/malloc.c	/^static mlTp del(mlTp mm){$/;"	f	file:
+del	net/ne2k/ne2k.c	/^static queueTp del(queueTp queue){$/;"	f	file:
+des	include/vm/vm.h	/^    unsigned long des;$/;"	m	struct:__anon9
+destEthAddr	net/ARP.c	/^    unsigned char  destEthAddr[6];  \/\/$/;"	m	struct:__anon11	file:
+destIP	net/ARP.c	/^    unsigned int   destIP;          \/\/$/;"	m	struct:__anon11	file:
+destMac	net/802/eth.c	/^    unsigned char destMac[6];$/;"	m	struct:__anon13	file:
 dg_error_code	kernel/int.S	/^dg_error_code:$/;"	l
 do_no_page	kernel/mm.c	/^void do_no_page(unsigned error,unsigned long addr){$/;"	f
 do_wp_page	kernel/mm.c	/^void do_wp_page(unsigned error,unsigned long addr){$/;"	f
-elf_sec	include/multiboot.h	/^    elf_section_header_table_t elf_sec;$/;"	m	union:multiboot_info::__anon2
+e	include/glib/list.h	/^    Element e;$/;"	m	struct:node
+elf_sec	include/multiboot.h	/^    elf_section_header_table_t elf_sec;$/;"	m	union:multiboot_info::__anon5
 elf_section_header_table	include/multiboot.h	/^typedef struct elf_section_header_table$/;"	s
 elf_section_header_table_t	include/multiboot.h	/^} elf_section_header_table_t;$/;"	t	typeref:struct:elf_section_header_table
 entry_addr	include/multiboot.h	/^  unsigned long entry_addr;$/;"	m	struct:multiboot_header
 error_code	kernel/int.S	/^error_code:$/;"	l
-find	kernel/malloc.c	/^mlTp find(mlTp mmList,unsigned long size){$/;"	f
+ethPacketTp	net/802/eth.c	/^}ethPakcetT,*ethPacketTp;$/;"	t	typeref:struct:__anon13	file:
+ethPakcetT	net/802/eth.c	/^}ethPakcetT,*ethPacketTp;$/;"	t	typeref:struct:__anon13	file:
+ethRecv	net/ethernet.c	/^extern void ethRecv(msgTp msg){$/;"	f
+ethSend	net/802/eth.c	/^int ethSend(msgTp src,unsigned long long mac,unsigned short type){$/;"	f
+ethSend	net/ethernet.c	/^extern int ethSend(msgTp data,unsigned char *dHost,unsigned char *sHost,unsigned short type){$/;"	f
+exit	include/vm/malloc.h	20;"	d
+find	include/glib/list.h	/^    Node (*find)(List this,void *);      \/\/查找节点$/;"	m	struct:list
+find	kernel/malloc.c	/^static mlTp find(mlTp ml,unsigned long size){$/;"	f	file:
+first	include/glib/list.h	/^    Node (*first)(List this);            \/\/获取列表第一个节点.$/;"	m	struct:list
 flags	include/multiboot.h	/^  unsigned long flags;$/;"	m	struct:multiboot_header
 flags	include/multiboot.h	/^  unsigned long flags;$/;"	m	struct:multiboot_info
+flags	include/net/ip.h	/^    unsigned short flags:3;       \/\/标志$/;"	m	struct:__anon1
+forEach	include/glib/list.h	/^    void (*forEach)(List this,void(*)(Node));          \/\/遍历节点$/;"	m	struct:list
 free	kernel/malloc.c	/^void free(void *p){$/;"	f
+freeArpTable	net/arp.c	/^static void freeArpTable(Node item){$/;"	f	file:
 free_page	kernel/mm.c	/^int free_page(unsigned long addr){$/;"	f
 gdt	x86/setup.S	/^gdt:$/;"	l
 gdt_end	x86/setup.S	/^gdt_end:$/;"	l
 gdt_start	x86/setup.S	/^gdt_start:$/;"	l
+getLevel	net/ne2k/ne2k.c	/^static inline queueTp getLevel(queueTp queue){$/;"	f	file:
+getNICMac	net/ne2k/ne2k.c	/^unsigned long long getNICMac(void){return MAC;};$/;"	f
 get_free_page	kernel/mm.c	/^unsigned long get_free_page(void){$/;"	f
+hdwAddrLen	net/ARP.c	/^    unsigned char  hdwAddrLen;  	\/\/硬件地址长度$/;"	m	struct:__anon11	file:
+hdwType	net/ARP.c	/^    unsigned short hdwType;     	\/\/硬件类型$/;"	m	struct:__anon11	file:
+headLenght	include/net/ip.h	/^    unsigned char headLenght:4;   \/\/首部长度,单位4byte$/;"	m	struct:__anon1
 header_addr	include/multiboot.h	/^  unsigned long header_addr;$/;"	m	struct:multiboot_header
+hostIp	include/net/ip.h	9;"	d
+hostIp	net/arp.c	9;"	d	file:
+hostMac	include/net/ethernet.h	11;"	d
+hwdLenght	include/net/arp.h	/^    unsigned char  hwdLenght;       \/\/硬件地址长度$/;"	m	struct:__anon2
+hwdType	include/net/arp.h	/^    unsigned short hwdType;         \/\/硬件类型$/;"	m	struct:__anon2
+id	include/net/ip.h	/^    unsigned short id;            \/\/标识$/;"	m	struct:__anon1
 idt	kernel/trap.c	/^const idtTp idt =   (idtTp) IDT_ADDR;$/;"	v
 idt	x86/setup.S	/^idt:$/;"	l
-idtT	include/x86/trap.h	/^}idtT,*idtTp;$/;"	t	typeref:struct:__anon1
-idtTp	include/x86/trap.h	/^}idtT,*idtTp;$/;"	t	typeref:struct:__anon1
-inb	include/x86/io.h	11;"	d
-inb_p	include/x86/io.h	23;"	d
+idtT	include/x86/trap.h	/^}idtT,*idtTp;$/;"	t	typeref:struct:__anon4
+idtTp	include/x86/trap.h	/^}idtT,*idtTp;$/;"	t	typeref:struct:__anon4
+imr	net/ne2k/ne2k.c	/^static  unsigned char imr = 0x1b;$/;"	v	file:
+inb	include/x86/io.h	13;"	d
+inb_p	include/x86/io.h	36;"	d
 install_int	kernel/trap.c	/^inline void install_int(unsigned int num,int_codeTp  func,unsigned int section,unsigned short attr){$/;"	f
 int_0	kernel/int.S	/^int_0:$/;"	l
 int_1	kernel/int.S	/^int_1:$/;"	l
@@ -148,11 +386,30 @@ int_8	kernel/int.S	/^int_8:$/;"	l
 int_9	kernel/int.S	/^int_9:$/;"	l
 int_clock	kernel/int.S	/^int_clock:$/;"	l
 int_codeTp	include/x86/trap.h	/^typedef void (*int_codeTp)(void);$/;"	t
-ip	include/vm/vm.h	/^    unsigned long ip;$/;"	m	struct:__anon3
+inw	include/x86/io.h	18;"	d
+inw_p	include/x86/io.h	44;"	d
+ip	include/vm/vm.h	/^    unsigned long ip;$/;"	m	struct:__anon8
+ip	net/arp.c	/^    unsigned int  ip;       \/\/IP$/;"	m	struct:__anon12	file:
+ipCompare	net/arp.c	/^static int ipCompare(ARPTable d,ARPTable s){$/;"	f	file:
+ipRecv	net/ip.c	/^void ipRecv(IPDatagram ipDatagram){$/;"	f
+ipSend	net/ip.c	/^void ipSend(unsigned int dip,unsigned int sip,msgTp data,unsigned short type){$/;"	f
+ipToMac	net/arp.c	/^extern  unsigned char *ipToMac(unsigned int ip){$/;"	f
+last	include/glib/list.h	/^    Node (*last)(List this);             \/\/获取列表最后一节点.$/;"	m	struct:list
+len	include/vm/msg.h	/^    unsigned short len;$/;"	m	struct:__anon7
+len	net/802/eth.c	/^        unsigned short len;$/;"	m	union:__anon13::__anon14	file:
+len	net/ne2k/ne2k.c	/^    unsigned short len;$/;"	m	struct:__anon15	file:
+lenght	include/net/ip.h	/^    unsigned short lenght;        \/\/数据报总长度,单位字节$/;"	m	struct:__anon1
 length_high	include/multiboot.h	/^  unsigned long length_high;$/;"	m	struct:memory_map
 length_low	include/multiboot.h	/^  unsigned long length_low;$/;"	m	struct:memory_map
+list	include/glib/glib.h	/^typedef struct list{$/;"	s
+list	include/glib/list.h	/^struct list{$/;"	s
+listT	include/glib/glib.h	/^}listT,*listTp;$/;"	t	typeref:struct:list
+listTp	include/glib/glib.h	/^}listT,*listTp;$/;"	t	typeref:struct:list
 load_addr	include/multiboot.h	/^  unsigned long load_addr;$/;"	m	struct:multiboot_header
 load_end_addr	include/multiboot.h	/^  unsigned long load_end_addr;$/;"	m	struct:multiboot_header
+localMac	include/net/ethernet.h	/^unsigned char localMac[ETH_ALEN];$/;"	v
+localMac	net/ethernet.c	/^unsigned char localMac[ETH_ALEN] = {0x00,0x00,0x00,0x20,0xc4,0xb0};$/;"	v
+mac	net/arp.c	/^    unsigned char mac[ETH_ALEN];    \/\/以太网地址$/;"	m	struct:__anon12	file:
 magic	include/multiboot.h	/^  unsigned long magic;$/;"	m	struct:multiboot_header
 malloc	kernel/malloc.c	/^void *malloc(unsigned long size){$/;"	f
 mem_lower	include/multiboot.h	/^  unsigned long mem_lower;$/;"	m	struct:multiboot_info
@@ -163,13 +420,14 @@ memory_map_t	include/multiboot.h	/^} memory_map_t;$/;"	t	typeref:struct:memory_m
 memset	c/string.c	/^void *memset(void *dest,int ch,int n){$/;"	f
 mlT	include/vm/malloc.h	/^}mlT,*mlTp;$/;"	t	typeref:struct:mnode
 mlTp	include/vm/malloc.h	/^}mlT,*mlTp;$/;"	t	typeref:struct:mnode
-mm	include/vm/vm.h	/^    unsigned long mm;$/;"	m	struct:__anon3
-mmList	kernel/malloc.c	/^static mlTp mmList = NULL;$/;"	v	file:
+mm	include/vm/vm.h	/^    unsigned long mm;$/;"	m	struct:__anon8
+mmList	kernel/malloc.c	/^mlTp mmList = &mmlist;$/;"	v
 mm_init	kernel/mm.c	/^void mm_init(unsigned long lower,unsigned long upper){$/;"	f
 mmap	kernel/mm.c	/^unsigned char * const mmap = (unsigned char *)MMAP_ADDR;$/;"	v
 mmap_addr	include/multiboot.h	/^  unsigned long mmap_addr;$/;"	m	struct:multiboot_info
 mmap_init	kernel/mm.c	/^void mmap_init(unsigned long addr,unsigned long length){$/;"	f
 mmap_length	include/multiboot.h	/^  unsigned long mmap_length;$/;"	m	struct:multiboot_info
+mmlist	kernel/malloc.c	/^static  mlT  mmlist= {0,NULL,NULL,FREE};$/;"	v	file:
 mnode	include/vm/malloc.h	/^typedef struct mnode{$/;"	s
 mod_end	include/multiboot.h	/^  unsigned long mod_end;$/;"	m	struct:module
 mod_start	include/multiboot.h	/^  unsigned long mod_start;$/;"	m	struct:module
@@ -178,52 +436,129 @@ mods_count	include/multiboot.h	/^  unsigned long mods_count;$/;"	m	struct:multib
 module	include/multiboot.h	/^typedef struct module$/;"	s
 module_t	include/multiboot.h	/^} module_t;$/;"	t	typeref:struct:module
 move_user_mode	include/x86/system.h	1;"	d
+msg	include/vm/msg.h	/^    unsigned char  msg[0];$/;"	m	struct:__anon7
+msg	net/ne2k/ne2k.c	/^    msgTp  msg;$/;"	m	struct:queue	file:
+msgT	include/vm/msg.h	/^}msgT,*msgTp;$/;"	t	typeref:struct:__anon7
+msgTp	include/vm/msg.h	/^}msgT,*msgTp;$/;"	t	typeref:struct:__anon7
 multiboot_header	include/multiboot.h	/^typedef struct multiboot_header$/;"	s
 multiboot_header	x86/setup.S	/^multiboot_header:$/;"	l
 multiboot_header_t	include/multiboot.h	/^} multiboot_header_t;$/;"	t	typeref:struct:multiboot_header
 multiboot_info	include/multiboot.h	/^typedef struct multiboot_info$/;"	s
 multiboot_info_t	include/multiboot.h	/^} multiboot_info_t;$/;"	t	typeref:struct:multiboot_info
+neCmd	include/net/ne2k/ne2k.h	92;"	d
+neGetBoundary	include/net/ne2k/ne2k.h	193;"	d
+neGetCurrnet	include/net/ne2k/ne2k.h	200;"	d
+neGetIntState	include/net/ne2k/ne2k.h	104;"	d
+neGetRecvState	include/net/ne2k/ne2k.h	159;"	d
+neGetTransferState	include/net/ne2k/ne2k.h	140;"	d
+neISR	net/ne2k/ne2k.c	/^void neISR(void){$/;"	f
+neInit	net/ne2k/ne2k.c	/^unsigned long long neInit(void){$/;"	f
+neReadDMA	include/net/ne2k/ne2k.h	95;"	d
+neRecv	net/ne2k/ne2k.c	/^msgTp neRecv(void){$/;"	f
+neSend	net/ne2k/ne2k.c	/^void neSend(msgTp buf){$/;"	f
+neSendPack	include/net/ne2k/ne2k.h	97;"	d
+neSetBoundary	include/net/ne2k/ne2k.h	192;"	d
+neSetCurrnet	include/net/ne2k/ne2k.h	195;"	d
+neSetDataConfig	include/net/ne2k/ne2k.h	117;"	d
+neSetIntMask	include/net/ne2k/ne2k.h	190;"	d
+neSetIntState	include/net/ne2k/ne2k.h	105;"	d
+neSetMAC	include/net/ne2k/ne2k.h	56;"	d
+neSetMap	include/net/ne2k/ne2k.h	66;"	d
+neSetRecvConfig	include/net/ne2k/ne2k.h	149;"	d
+neSetRecvPage	include/net/ne2k/ne2k.h	185;"	d
+neSetRemoteAddr	include/net/ne2k/ne2k.h	174;"	d
+neSetRemoteByteCount	include/net/ne2k/ne2k.h	169;"	d
+neSetTransferByteCount	include/net/ne2k/ne2k.h	180;"	d
+neSetTransferConfig	include/net/ne2k/ne2k.h	129;"	d
+neSetTransferPage	include/net/ne2k/ne2k.h	179;"	d
+neWriteDMA	include/net/ne2k/ne2k.h	94;"	d
+newList	glib/list.c	/^extern List newList(void (*_removeNode)(Node node),$/;"	f
 new_env	x86/setup.S	/^new_env:$/;"	l
+next	include/glib/glib.h	/^    struct list *next;$/;"	m	struct:list	typeref:struct:list::list
+next	include/glib/list.h	/^    struct node * next;$/;"	m	struct:node	typeref:struct:node::node
 next	include/vm/malloc.h	/^    struct mnode    *next;$/;"	m	struct:mnode	typeref:struct:mnode::mnode
+next	include/vm/msg.h	/^    void    *next;$/;"	m	struct:__anon7
+next	net/ne2k/ne2k.c	/^    struct queue *next;$/;"	m	struct:queue	typeref:struct:queue::queue	file:
+next	net/ne2k/ne2k.c	/^    unsigned char next;$/;"	m	struct:__anon15	file:
 no_error_code	kernel/int.S	/^no_error_code:$/;"	l
+node	include/glib/list.h	/^typedef struct node{$/;"	s
+nodes	include/glib/list.h	/^    Node nodes;$/;"	m	struct:list
 nop	kernel/trap.c	/^void    nop(void){$/;"	f
 null_int	kernel/int.S	/^null_int:$/;"	l
 num	include/multiboot.h	/^  unsigned long num;$/;"	m	struct:elf_section_header_table
-op	include/vm/vm.h	/^    unsigned long op;$/;"	m	struct:__anon4
+offset	include/net/ip.h	/^    unsigned short offset:13;     \/\/片偏移$/;"	m	struct:__anon1
+op	include/net/arp.h	/^    unsigned short op;              \/\/操作$/;"	m	struct:__anon2
+op	include/vm/vm.h	/^    unsigned long op;$/;"	m	struct:__anon9
+op	net/ARP.c	/^    unsigned short op;          	\/\/操作$/;"	m	struct:__anon11	file:
 open_pagination	kernel/mm.c	/^unsigned long open_pagination(void){$/;"	f
 outb	include/x86/io.h	8;"	d
-outb_p	include/x86/io.h	17;"	d
+outb_p	include/x86/io.h	24;"	d
+outw	include/x86/io.h	10;"	d
+outw_p	include/x86/io.h	30;"	d
 over	x86/setup.S	/^over:$/;"	l
 page_fault	kernel/int.S	/^page_fault:$/;"	l
+perror	include/vm/malloc.h	25;"	d
 print_error	kernel/trap.c	/^void    print_error(int error){$/;"	f
 printk	kernel/dg.c	/^int printk(char *str,...){$/;"	f
+protocol	include/net/ip.h	/^    unsigned char  protocol;      \/\/协议$/;"	m	struct:__anon1
+protocolLenght	include/net/arp.h	/^    unsigned char  protocolLenght;  \/\/协议地址长度$/;"	m	struct:__anon2
+protocolType	include/net/arp.h	/^    unsigned short protocolType;    \/\/协议类型$/;"	m	struct:__anon2
+ptlAddrLen	net/ARP.c	/^    unsigned char  ptlAddrLen;  	\/\/协议地址长度$/;"	m	struct:__anon11	file:
+ptlType	net/ARP.c	/^    unsigned short ptlType;     	\/\/协议类型$/;"	m	struct:__anon11	file:
+putByte	kernel/dg.c	/^void putByte(unsigned char num){$/;"	f
 put_page	kernel/mm.c	/^int put_page(unsigned vd,unsigned pd){$/;"	f
 puthex	kernel/dg.c	/^void puthex(unsigned int num){$/;"	f
+queue	net/ne2k/ne2k.c	/^typedef struct queue{$/;"	s	file:
+queueT	net/ne2k/ne2k.c	/^}queueT,*queueTp;$/;"	t	typeref:struct:queue	file:
+queueTp	net/ne2k/ne2k.c	/^}queueT,*queueTp;$/;"	t	typeref:struct:queue	file:
+recvHeadT	net/ne2k/ne2k.c	/^}recvHeadT,*recvHeadTp;$/;"	t	typeref:struct:__anon15	file:
+recvHeadTp	net/ne2k/ne2k.c	/^}recvHeadT,*recvHeadTp;$/;"	t	typeref:struct:__anon15	file:
 refpage	include/x86/system.h	23;"	d
+remove	include/glib/list.h	/^    void (*remove)(List this);           \/\/删除列表头部元素.$/;"	m	struct:list
+removeLast	include/glib/list.h	/^    void (*removeLast)(List this);       \/\/删除链表尾部元素.$/;"	m	struct:list
+removeNode	include/glib/list.h	/^    void (*removeNode)(Node);            \/\/节点资源释放函数$/;"	m	struct:list
+replayARP	net/ARP.c	/^void replayARP(unsigned int sIP,unsigned int dIP,$/;"	f
 reserved	include/multiboot.h	/^  unsigned long reserved;$/;"	m	struct:aout_symbol_table
 reserved	include/multiboot.h	/^  unsigned long reserved;$/;"	m	struct:module
 root	include/vm/malloc.h	/^    struct mnode    *root;$/;"	m	struct:mnode	typeref:struct:mnode::mnode
-section	include/x86/trap.h	/^    unsigned    short   section;$/;"	m	struct:__anon1
+sHost	include/net/arp.h	/^    unsigned char  sHost[ETH_ALEN]; \/\/发送端主机以太网地址$/;"	m	struct:__anon2
+sHost	include/net/ethernet.h	/^    unsigned char sHost[ETH_ALEN];  \/\/源主机$/;"	m	struct:__anon3
+sIP	include/net/arp.h	/^    unsigned int   sIP;             \/\/发送端IP地址$/;"	m	struct:__anon2
+sIP	include/net/ip.h	/^    unsigned int sIP;           \/\/源IP$/;"	m	struct:__anon1
+section	include/x86/trap.h	/^    unsigned    short   section;$/;"	m	struct:__anon4
+sendQueue	net/ne2k/ne2k.c	/^static queueTp sendQueue = NULL;$/;"	v	file:
 shndx	include/multiboot.h	/^  unsigned long shndx;$/;"	m	struct:elf_section_header_table
+shortNetToHost	net/ne2k/ne2k.c	19;"	d	file:
+show	net/ne2k/ne2k.c	/^void show(msgTp msg){$/;"	f
 size	include/multiboot.h	/^  unsigned long size;$/;"	m	struct:elf_section_header_table
 size	include/multiboot.h	/^  unsigned long size;$/;"	m	struct:memory_map
 size	include/vm/malloc.h	/^    unsigned long   size;$/;"	m	struct:mnode
-sp	include/vm/vm.h	/^    unsigned long sp;$/;"	m	struct:__anon3
-src	include/vm/vm.h	/^    unsigned long src;$/;"	m	struct:__anon4
+sp	include/vm/vm.h	/^    unsigned long sp;$/;"	m	struct:__anon8
+src	include/vm/vm.h	/^    unsigned long src;$/;"	m	struct:__anon9
+srcEthAddr	net/ARP.c	/^    unsigned char  srcEthAddr[6];	\/\/$/;"	m	struct:__anon11	file:
+srcIP	net/ARP.c	/^    unsigned int   srcIP;           \/\/$/;"	m	struct:__anon11	file:
+srcMac	net/802/eth.c	/^    unsigned char srcMac[6];$/;"	m	struct:__anon13	file:
 start	x86/setup.S	/^start:$/;"	l
-state	include/vm/malloc.h	/^    }state;$/;"	m	struct:mnode	typeref:enum:mnode::__anon5
+state	include/vm/malloc.h	/^    }state;$/;"	m	struct:mnode	typeref:enum:mnode::__anon10
+state	net/ne2k/ne2k.c	/^    unsigned char state;$/;"	m	struct:__anon15	file:
 sti	include/x86/system.h	20;"	d
-strcpy	c/string.c	/^char *strcpy(char *dest,const char *src){$/;"	f
+strcpy	c/string.c	/^char *strcpy(char *dest, char *src){$/;"	f
 string	include/multiboot.h	/^  unsigned long string;$/;"	m	struct:module
 strsize	include/multiboot.h	/^  unsigned long strsize;$/;"	m	struct:aout_symbol_table
 tabsize	include/multiboot.h	/^  unsigned long tabsize;$/;"	m	struct:aout_symbol_table
+tos	include/net/ip.h	/^    unsigned char tos;            \/\/服务类型$/;"	m	struct:__anon1
 trap_init	kernel/trap.c	/^void trap_init(void){$/;"	f
 ts_int	kernel/int.S	/^ts_int:$/;"	l
+ttl	include/net/ip.h	/^    unsigned char  ttl;           \/\/生存时间$/;"	m	struct:__anon1
 type	include/multiboot.h	/^  unsigned long type;$/;"	m	struct:memory_map
-u	include/multiboot.h	/^  } u;$/;"	m	struct:multiboot_info	typeref:union:multiboot_info::__anon2
+type	include/net/ethernet.h	/^    unsigned short type;            \/\/包类型$/;"	m	struct:__anon3
+type	net/802/eth.c	/^        unsigned short type;$/;"	m	union:__anon13::__anon14	file:
+u	include/multiboot.h	/^  } u;$/;"	m	struct:multiboot_info	typeref:union:multiboot_info::__anon5
 uget_free_page	kernel/mm.c	/^unsigned long uget_free_page(void){$/;"	f
 un_wp_page	kernel/mm.c	/^unsigned long  un_wp_page(unsigned long page){$/;"	f
 un_wpte_page	kernel/mm.c	/^unsigned long un_wpte_page(unsigned long page){$/;"	f
+unite	kernel/malloc.c	/^static mlTp unite(mlTp mm){$/;"	f	file:
+v	include/net/ip.h	/^    unsigned char v:4;            \/\/版本$/;"	m	struct:__anon1
 va_arg	include/stdarg.h	9;"	d
 va_end	include/stdarg.h	14;"	d
 va_list	include/stdarg.h	/^typedef     void    *va_list;$/;"	t
