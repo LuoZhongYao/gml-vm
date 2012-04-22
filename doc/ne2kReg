@@ -1,0 +1,309 @@
+NE2K系列网卡
+    NE2K系列有4页寄存器,兼容的只有前3页,PAGE0~PAGE2.
+    网卡含有16K字节的RAM，地址为0x4000-0x7fff(指的是网卡上的存储地址，而不是ISA总线的地址，是网卡工作用的存储器），每256 个字节称为一页，共有64页。页的地址就是地址的高8位，页地址为0x40--0x7f 。这16k的ram的一部分用来存放接收的数据包，一部分用来存储待发送的数据包。当然也可以给用户使用。
+    8019输入输出地址共32个，地址偏移量为00H――1FH：其中00H－－0FH共16个地址，为寄存器地址，寄存器分成4页PAGE0――PAGE3，与 NE2000兼容的寄存器只有3页(Page0－Page2)，为了保证驱动程序对所有Ne2000的
+网卡有效，不要去操作第四页的寄存器。
+    10H－－17H共8个地址，为DMA地址。
+    18H－－1FH共8个地址，为软复位端口。
+    8019的硬件复位很简单，只需在上电时对RSTDRV输出一高电平就可以了。8019复位的过程将执行一些操作，比如将93c46读入，将内部寄存器初始化等，至少需要2毫秒的时间。推荐等待更久的时间之后才对网卡操作，比如100毫秒之后才对它操作，以确保完全复位。
+
+    网卡除了16k（地址0x4000－0x7FFFF）的接收发送存储RAM之外，还有别的RAM,还有一块大小为256字节的RAM，地址为0x0000 －0x00FF，这部分RAM是eeprom 93C46的影像存储（不完全一样），存储的内容的一部分跟93C46存储的是一样的。 网卡在上电的时候将93C46的一部分内容读到这256字节的RAM里。存储是WORD类型，其中地址：
+    0x0000-0x000b共12个字节是网卡的物理地址。（网卡的物理地址是6个字节的，为什么要用12字节？因为这12字节是重复存储的。例如网卡物理地址0x52544CC118CF,存储在0x0000-0x000b里是这样的：
+    525254544C4CC1C11818CFCF
+    我们可以看到单和双的地址存储的是一样的。0x000b后面的地址存储的是生产厂商的代码和产品标识代码，也是单双地址重复存储，这里就不说了。 
+
+寄存器:
+    CR(command register):
+        偏移地址:   0x00
+        字节:       1
+        位:
+            STP(位0):
+            STA(位1):STA很STP用来启动命令核停止命令
+                    = 10     启动
+                    = 01     停止
+            TXP(位2):写入1放送数据包,发送完成自动清0
+            RD0(位3):
+            RD1(位4):
+            RD2(位5):这三位代表要执行的命令
+                    = 001   读网卡内存
+                    = 010   写网卡内存
+                    = 011   发送网卡数据包
+                    = 1**   完成或结束DMA操作
+            PS0(位6):
+            PS1(位7):这两位选择页
+                    = 00    0页寄存器
+                    = 01    1页寄存器
+                    = 10    2页寄存器
+                    = 11    3页寄存器
+    页0寄存器
+    PSTART(page start):
+        偏移地址:   0x1
+        字节    :   1
+        功能    :
+            发送缓冲区开始页,一页大小为256 bit.
+            该段内存在NIC的RAM内
+    PSTOP(page stop):
+        偏移地址:   0x2
+        字节    :   1
+        功能    :
+            放送缓冲区的结束页
+            PSTART和PSTOP界定发送缓冲区的大小.
+            该缓冲区是环形缓冲区,当CURR超过PSTOP硬件自动
+            设置CURR = PSTRAT
+    BNRY(boundary):
+        偏移地址:   0x3
+        字节    :   1
+        功能    :
+            指向最后一个读取的页,该寄存器由程序维护
+    TPSR(transfer start register): 
+        偏移地址:   0x4
+        字节    :   1
+        功能    :
+            传送缓冲区寄存器,程序通过端口XX,将待传送的数据写
+            入这段RAM,由网卡完成发送,通常设置成0X40,并且占12页
+            刚好2个最大的数据包.
+    TBCL(transfer byte count low):
+        偏移地址:   0x5
+        字节    :   1
+        功能    :
+            发送数据的字节数低8位
+    TBCH(transfer byte count higt):
+        偏移地址:   0x6
+        字节    :   1
+        功能    :
+            发送数据的字节数高8位
+    INTSR(interrupt status):
+        偏移地址:   0x7
+        字节    :   1
+        位      :
+
+    RSARL(remote start address low):
+        偏移地址:   0x8
+        字节    :   1
+        功能    :
+            网卡RAM地址低8位
+    RSARH(remote start address higt):
+        偏移地址:   0x9
+        字节    :   1
+        功能    :
+            网卡RAM地址高8位
+    RBCRL(remote byte count register low):
+        偏移地址:   0xa
+        字节    :   1
+        功能    :
+            读取字节计数器低8位
+    RBCRH(remote byte count register higt):
+        偏移地址:   0xb
+        字节    :   1
+        功能    :
+            读取字节计数器高8位
+    RCR(recv configure register)
+        偏移地址:   0xc
+        字节    :   1
+        功能    :
+            位:
+                SEP(0):
+                    0:拒绝错误
+                    1:接收错误,
+                AR(1):
+                    0:拒绝小于64字节组播数据包
+                    1:接收小于64字节
+                AB(2):
+                    0:不接收组播数据包
+                    1:接收组播数据包
+                AM(3):
+                    0:拒绝广播数据
+                    1:接收广播数据
+                PRO(4):
+                    0:接收跟自己地址相同的数据包
+                    1:接收所有数据包,不管地址如何
+                MON(5):
+                6,7:保留
+    RSR(recv status register):
+        偏移地址:   0xc
+        位      :
+            PRX(0) = 1:没有错误
+            CRC(1) = 1:校验正确
+            FAE(2) =  :?
+            3:保留
+            MPA(4)    :?
+            PHY(5) = 1:广播地址
+            DIS(6)    :?
+            DFR       :?
+    TCR(transfer configure register)
+        偏移地址:   0xd
+        字节    :   1
+        功能    :
+            字节:
+                CRC(0):
+                LB1(1):
+                LB2(2):
+                    = 00    Normal Operation
+                    = 01    Internal Lookback
+                    = 10    External Lookback 
+                    = 11    External Lookback 
+                ATD(3):
+                    0:正常模式
+                    1:组播地址控制
+                OFST(4):
+                5~7:保留
+    DCR(data configure register)
+        偏移地址:   0xe
+        字节    :   1
+        功能    :
+    
+    IMR(interrupt mask register)
+        偏移地址:   0xf
+        字节    :   1
+        功能    :
+            相应位为1允许相应中断.
+        位      :
+         
+    
+    页1寄存器:
+    PAR0(physical address register):
+        偏移地址:   0x1
+        字节    :   1
+        功能    :
+    PAR1(physical address register):
+        偏移地址:   0x2
+        字节    :   1
+        功能    :
+    PAR2(physical address register):
+        偏移地址:   0x3
+        字节    :   1
+        功能    :
+    PAR3(physical address register):
+        偏移地址:   0x4
+        字节    :   1
+        功能    :
+    PAR4(physical address register):
+        偏移地址:   0x5
+        字节    :   1
+        功能    :
+    PAR5(physical address register):
+        偏移地址:   0x6
+        字节    :   1
+        功能    :
+            PAR0~PAR5 物理地址寄存器，位于page1，共6个字节，这就是网卡的地址，复位之后该6个寄存器的值是不定的。要 由用户将网卡地址写入到该6个寄存器中，以后网卡接收到的数据包，会将数据包的目的地址跟这6个寄存器的值进行比较，结果相同的数据包被接收下来。上电复 位时从93c46读入的网卡地址不会自动写入到这里，而是放在rtl8019as的内存地址0000H,0002H,0004H,0006H, 0008H,000AH,0000CH里。你的程序要从这6个内存地址里读出网卡地址，写入到PAR0-5 共6个寄存器地址里。如果你的系统没有使用93c46来存储该网卡地址，那么要由你的软件自行产生或分配一个网卡地址，写入到6个寄存器里
+    CURR(currnet):
+        偏移地址:   0x7
+        字节    :   1
+        功能    :
+            当前接收页结束地址.
+            BNRY = CURR + 1.表示有新数据
+    MAR0:
+        偏移地址:   0x8
+        字节    :   1
+        功能    :
+            未知
+    MAR1:
+        偏移地址:   0x9
+        字节    :   1
+        功能    :
+            未知
+    MAR2:
+        偏移地址:   0xa
+        字节    :   1
+        功能    :
+            未知
+    MAR3:
+        偏移地址:   0xb
+        字节    :   1
+        功能    :
+            未知
+    MAR4:
+        偏移地址:   0xc
+        字节    :   1
+        功能    :
+            未知
+    MAR5:
+        偏移地址:   0xd
+        字节    :   1
+        功能    :
+            未知
+    MAR6:
+        偏移地址:   0xe
+        字节    :   1
+        功能    :
+            未知
+    MAR7:
+        偏移地址:   0xf
+        字节    :   1
+        功能    :
+        为8 个寄存器，提供对组播地址的过滤。跟crc的逻辑有关。我对于该8个寄存器跟组播地址的关系不是很清楚，也没有找到相关的资料。将该8个寄存器全部写入 0FFH，可以接收所有的组播地址地数据包。全部写入0，将不接收任何组播地址的数据包。在windows 98操作系统里，操作系统写入到这8个寄存器的值为：
+        MAR0 :00H
+        MAR1 :41H
+        MAR2 :00H
+        MAR3 :80H
+        MAR4 :00H
+        MAR5 :00H
+        MAR6 :00H
+        MAR7 :00H
+
+
+//以下是特殊寄存器的位定义
+//   CR寄存器
+#define stop_cmd  0x01  //停止接受或发送数据
+#define start_cmd 0x02  //启动接受或发送数据
+#define txp       0x04  //发送数据
+#define no_dma    0x00  //禁止DMA
+#define read_dma  0x08  //允许远程DMA读
+#define write_dma 0x10  //允许远程DMA写
+#define send_pck  0x18  //发送数据
+#define abort_dma 0x20  //退出/完成远程DMA
+#define page0     0x00  //PAGE0选择
+#define page1     0x40  //PAGE1选择
+#define page2     0x80  //PAGE2选择
+#define page3     0xc0  //PAGE3选择
+//   ISR中断状态寄存器
+#define isr_prx   0x01 //无错误接受数据包
+#define isr_ptx   0x02 //无错误发送数据包
+#define rxe       0x04 //接受数据包带有如下错误：CRC错误、包丢失错误以及帧队列错误
+#define txe       0x08 //过分冲突导致传输错误
+#define ovw       0x10 //接受缓冲器溢出
+#define cnt       0x20 //当一个或多个网络计数器的MSB 设置完成时该位被设置。
+#define rdc       0x40 //远程DMA操作完成
+#define rst       0x80 //复位
+//  DCR数据结构寄存器
+#define wts       0x01 //字长的DMA传送
+#define bos       0x02 //传送过程中高位放到MD15-8，低位放到MD7-0
+#define las       0x04 //16位DMA传送模式
+#define ls        0x08 //回路检测，正常操作
+#define arm       0x10 //自动初始化远程操作，发送包命令执行
+#define fifo00    0x00 // 2字节
+#define fifo01    0x20 // 4字节
+#define fifo10    0x40 // 8字节
+#define fifo11    0x60 // 12字节
+//  TCR传输配置寄存器
+#define tcr_config 0x00//设置将要配置TCR寄存器的值
+#define tcr_crc   0x00 //CRC正常操作
+#define lb00      0x00 //正常操作
+#define lb01      0x02 //内部LOOKBACK
+#define lb10      0x04 //外部LOOKBACK
+#define lb11      0x06 //外部LOOKBACK
+#define atd       0x08 //多播地址混乱接受
+#define ofst      0x10 //冲突补偿
+//  TSR传送状态寄存器
+#define tsr_ptx  0x01 //无错误接收数据
+#define col      0x04 //数据传输过程中出现冲突
+#define abt      0x08 //超频导致传送失败
+#define crs      0x10 //传送数据包时，有包丢失
+#define cdh      0x40 //
+#define owc      0x80 //
+//  RCR接受配置寄存器
+#define rcr_config 0x04//设置将要配置的RCR寄存器的值
+#define sep      0x01 //允许错误数据包被接受
+#define ar       0x02 //允许帧长度小于64bytes的数据包被接受
+#define ab       0x04 //允许广播地址帧数据包被接收
+#define am       0x08 //允许多播地址数据包被被接收
+#define pro      0x10 //允许所有具有目的地址数据包被接收
+#define mon      0x20 //
+//  RSR接受状态寄存器
+#define rsr_prx  0x01 //无错误接受数据标志
+#define rsr_crc  0x02 //CRC错误位
+#define fae      0x04 //帧同步错误位
+#define mpa      0x10 //数据包丢失位
+#define phy      0x20 //多播或广播位
+#define dis      0x40 //禁止接受位
+#define dfr      0x80 //冲突位
